@@ -10,7 +10,9 @@
   {
     status: (int, 0 none, 1 created, 2 started), 
     gridSize: (int), 
-    players: [ {id: (int), photo: (file)} ], maxPlayers: (int) 
+    players: [ {id: (int), photo: (file)} ], 
+    maxPlayers: (int) ,
+    currentPlayer: (int)
   }
   ```
 
@@ -51,7 +53,7 @@
         columns: 
         [ 
           { 
-            status: (int, 0=none, 1=hit), 
+            status: (int, 0=none, 1=miss, 2=hit), 
             players: 
               [
                 {id:(int), photo:(int)},
