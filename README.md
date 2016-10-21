@@ -3,7 +3,16 @@
 ## API Endpoints
 
 - GET /game
-  returned HTTP 200 `{status: (int, 0 none, 1 created, 2 started), gridSize: (int), players: [ {id: (int), photo: (file)} ], maxPlayers: (int) }`
+
+  returned HTTP 200 
+  
+  ```
+  {
+    status: (int, 0 none, 1 created, 2 started), 
+    gridSize: (int), 
+    players: [ {id: (int), photo: (file)} ], maxPlayers: (int) 
+  }
+  ```
 
 ### GSM front-end
 
