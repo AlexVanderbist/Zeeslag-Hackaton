@@ -21,10 +21,25 @@
             }, function errorCallback(response) {
 
             });
+        };
+
+        //word /game
+      //  $scope.maxPlayers = 8;
+        $scope.startNewGame = function(maxPlayers){
+
+       // console.log(maxPlayers);
+            $http.post('./test.json',{
+                maxPlayers: maxPlayers
+            }).success(function(data){
+                $scope.gridSize = data["gridSize"];
+
+
+            });
+        };
+
+        $scope.set_boat = function(x,y,direction,lengthboat){
+
         }
-
-
-        $scope.get
 
 
     }]);
