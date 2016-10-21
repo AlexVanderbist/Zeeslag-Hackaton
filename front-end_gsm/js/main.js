@@ -31,7 +31,7 @@
         $scope.startNewGame = function(maxPlayers){
 
        // console.log(maxPlayers);
-            $http.post('./test.json',{
+            $http.post('/game',{
                 maxPlayers: maxPlayers
             }).success(function(data){
 
@@ -47,12 +47,18 @@
                 $scope.gameStatus = 1;
             });
         };
+
         var boat2IsSet = false;
         var boat3isSet = false;
         var boat5isSet = false;
         var boatsFullArray = [];
         var newBoatArray = [];
         var newBoatOk = true;
+
+        var currentBoat = {};
+        var allBoats = [];
+
+
 
 
         $scope.set_boat = function(x,y,direction,lengthboat){
@@ -114,8 +120,18 @@
                         $('.' + newBoatArray[i]).addClass("boat");
                     }
 
+                         currentBoat = {
+                            x: x,
+                             y: y,
+                             direction: direction,
+                             length: lengthboat
+                        };
+
+                    allBoats.push(currentBoat);
+
+
                 }
-                
+
                 newBoatArray = [];
                 
             };
@@ -151,6 +167,10 @@
                     newBoatOk = true;
                 }
             }
+            if(boat2IsSet && boat3isSet && boat5isSet){
+                console.log(allBoatsSec[0]);
+            }
+
 
 
 
@@ -158,10 +178,20 @@
            // console.log(y);
            // console.log(y);
            // console.log("x" + x + " y" + y );
-        }
+        };
 
-        $scope.post_boat = function(x,y,direction,lengthboat){
+        $scope.post_boats = function(){
+            if(boat2IsSet && boat3isSet && boat5isSet){
+               // console.log(allBoats);
+            completeList = [{boats: allBoats}];
+            $http.post('/game/player',{
+              boats: allBoats
+            }).success(function(data){
 
+                 $scope.playerId = data['playerId'];
+
+            });
+            }
         }
 
 
