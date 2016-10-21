@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="base.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
+          rel="stylesheet">
+    <script src="base_angular_projector.js"></script>
+</head>
+
+<body ng-app="myapp">
+<div>
+
+</div>
+
+
+<div ng-controller="GrideController">
+    <div>
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                <di href="#" class="thumbnail">
+                    <img src="foto.jpg">
+                </di>
+            </div>
+            ...
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10  col-sm-offset-1">
+                <table>
+                    <tr ng-repeat="p in range(1,gride.height)">
+                        <td ng-repeat="n in range(1,gride.length)"><span class="glyphicon glyphicon-remove-circle"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
