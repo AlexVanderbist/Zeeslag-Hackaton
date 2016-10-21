@@ -9,6 +9,7 @@
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
           rel="stylesheet">
     <script src="base_angular_projector.js"></script>
+    <script   src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
 </head>
 
 <body ng-app="myapp">
@@ -18,27 +19,88 @@
 
 
 <div ng-controller="GrideController">
-    <div>
-        <div class="row">
-            <div class="col-xs-6 col-md-3">
-                <di href="#" class="thumbnail">
-                    <img src="foto.jpg">
-                </di>
-            </div>
-            ...
-        </div>
-    </div>
+
+
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-10  col-sm-offset-1">
+            <div class="col-md-6">
                 <table>
                     <tr ng-repeat="p in range(1,gride.height)">
-                        <td ng-repeat="n in range(1,gride.length)"><span class="glyphicon glyphicon-remove-circle"></span>
+                        <td ng-repeat="n in range(1,gride.length)">
+                            <div ng-if="n == 2 && p == 2">
+                                <img ng-src="{{users.user_photo}}">
+                                <img class="reflect" ng-src="{{users.user_photo}}">
+                                <div id="wrap">
+                                    <div class="box" ng-repeat="n in range(1,100)"></div>
+                                </div>
+                            </div>
+                            <div ng-if="!(n == 2 && p == 2)">
+                                {{n  }}{{p }}
+                            </div>
+
+                        </span>
                         </td>
                     </tr>
                 </table>
             </div>
+            <div class="col-md-5">
+                <div class="col-md-12 players">
+                    <div href="#" class="col-md-3 ">
+                        <img class="player_pictuur" ng-src="{{users.user_photo}}">
+                    </div>
+                    <div class="col-md-7  playr_content">
+                        <p>Naam:</p>
+                        <p>Achternaam:</p>
+                    </div>
+                </div>
+                <div class="col-md-12 players">
+                    <div href="#" class="col-md-3 ">
+                        <img class="player_pictuur" ng-src="{{users.user_photo}}">
+                    </div>
+                    <div class="col-md-7  playr_content">
+                        <p>Naam:</p>
+                        <p>Achternaam:</p>
+                    </div>
+                </div>
+                <div class="col-md-12 players">
+                    <div href="#" class="col-md-3 ">
+                        <img class="player_pictuur" ng-src="{{users.user_photo}}">
+                    </div>
+                    <div class="col-md-7  playr_content">
+                        <p>Naam:</p>
+                        <p>Achternaam:</p>
+                    </div>
+                </div>
+                <div class="col-md-12 players">
+                    <div href="#" class="col-md-3 ">
+                        <img class="player_pictuur" ng-src="{{users.user_photo}}">
+                    </div>
+                    <div class="col-md-7  playr_content">
+                        <p>Naam:</p>
+                        <p>Achternaam:</p>
+                    </div>
+                </div>
+                <div class="col-md-12 players">
+                    <div href="#" class="col-md-3 ">
+                        <img class="player_pictuur" ng-src="{{users.user_photo}}">
+                    </div>
+                    <div class="col-md-7  playr_content">
+                        <p>Naam:</p>
+                        <p>Achternaam:</p>
+                    </div>
+                </div>
+                <div class="col-md-12 players">
+                    <div href="#" class="col-md-3 ">
+                        <img class="player_pictuur" ng-src="{{users.user_photo}}">
+                    </div>
+                    <div class="col-md-7  playr_content">
+                        <p>Naam:</p>
+                        <p>Achternaam:</p>
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
