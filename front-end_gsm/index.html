@@ -71,7 +71,7 @@
             
             <table class="grid">
                 <tr ng-repeat="y in gridArray">
-                    <td ng-repeat="x in gridArray" ng-click="set_boat(x, y, direction, length)" ng-class="{boat: y==2}">{{x}}{{y}}</td>
+                    <td ng-repeat="x in gridArray" ng-click="set_boat(x, y, direction, length)" class="{{x}}{{y}}">{{x}}{{y}}</td>
                 </tr>
             </table>
             

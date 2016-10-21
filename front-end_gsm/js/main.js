@@ -43,7 +43,7 @@
                     array.push(i);
                 }
                 $scope.gridArray = array ;
-                console.log( $scope.gridArray);
+                //console.log( $scope.gridArray);
                 $scope.gameStatus = 1;
             });
         };
@@ -52,6 +52,7 @@
         var boat5isSet = false;
         var boatsFullArray = [];
         var newBoatArray = [];
+        var newBoatOk = true;
 
 
         $scope.set_boat = function(x,y,direction,lengthboat){
@@ -81,66 +82,70 @@
                 }
                 currentx =x;
                 currenty =y;
+                console.log("newboatarray= " + newBoatArray);
             };
 
-            console.log(boatsFullArray);
+            //console.log(boatsFullArray);
 
             var loop = function(){
 
-                for(var i = 0; i < lengthboat ; i++){
-
-                    if(direction == "east"){
-                        var stylex = currentx.toString();
-                        var styley = y;
-                        var styletot = stylex.concat(styley.toString());
-
-                            if(boatsFullArray.indexOf(styletot) != null){
-                                console.log('index of boat =' + boatsFullArray.indexOf(styletot));
-                                boatsFullArray.push(styletot);
-                            $('.' + styletot).addClass("boat");
-                            boatx.push(currentx++);
-                            boaty.push(y);
-                            }
-
-
-
-
-                        console.log(styletot);
-
-                    }else if(direction == "south"){
-                        var styley = currenty.toString();
-                        var stylex = x.toString();
-                        var styletot = stylex.concat(styley.toString());
-
-                            if(boatsFullArray.indexOf(styletot) != null) {
-                                $('.' + styletot).addClass("boat");
-                                boatx.push(x);
-                                boaty.push(currenty++);
-                            }
-
-                        boatsFullArray.push(styletot);
+                console.log(newBoatArray.length);
+                for(var i = 0; i < newBoatArray.length; i++) {
+                    //
+                    if(boatsFullArray.indexOf(newBoatArray[i]) != -1){
+                        //
+                        console.log(newBoatArray[i] + " bestaat al!!");
+                        newBoatOk = false;
+                        break;
+                    }
+                    else {
+                        console.log(newBoatArray[i] + " bestaat nog niet...");
+                        //boatsFullArray.push(newBoatArray[i]);
+                        //$('.' + newBoatArray[i]).addClass("boat");
                     }
                 }
+                console.log("newbOK " + newBoatOk);
+                if(newBoatOk) {
+                    console.log("boot mag toegvoegd worden");
+                    for(var i = 0; i < newBoatArray.length; i++) {
+                        boatsFullArray.push(newBoatArray[i]);
+                        $('.' + newBoatArray[i]).addClass("boat");
+                    }
+                }
+                
+                newBoatArray = [];
+                
             };
+            
             if(!boat2IsSet){
                 if(lengthboat == 2){
                     preloop();
-                loop();
-                boat2IsSet = true
+                    loop();
+                    if(newBoatOk) {
+                        boat2IsSet = true;
+                    }
+                    newBoatOk = true;
                 }
             }
             if(!boat3isSet){
                 if(lengthboat == 3) {
                     preloop();
                     loop();
-                    boat3isSet = true;
+                    if(newBoatOk) {
+                        boat3isSet = true;
+                    }
+                    newBoatOk = true;
                 }
             }
             if(!boat5isSet){
+                console.log("lukt dit???");
                 if(lengthboat == 5) {
                     preloop();
                     loop();
-                    boat5isSet = true;
+                    if(newBoatOk) {
+                        boat5isSet = true;
+                    }
+                    newBoatOk = true;
                 }
             }
 
