@@ -1,6 +1,29 @@
 html, body {
-    margin: 0;
+    margin: 0 auto;
     font-family: "Calibri", sans-serif;
+
+}
+.mainIndex{
+
+    width: 100%;
+}
+.indexContent{
+
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+.game_none form{
+    text-align: center;
+    width: 100%;
+}
+
+.game_none form label{
+    width: 100%;
+}
+.game_none form input{
+    width: 100%;
 }
 
 
