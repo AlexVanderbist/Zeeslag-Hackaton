@@ -2,6 +2,9 @@ html, body {
     margin: 0 auto;
     font-family: "Calibri", sans-serif;
     background-color: #153865;
+    background-image: url(../images/background_image.jpg);
+    background-size: 80px 60px;
+    background-repeat: no-repeat;
     color: #7CBFB8;
     font-size: 100%;
 }
