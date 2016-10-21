@@ -1,6 +1,8 @@
 /**
  * Created by Rowan on 21-10-2016.
  */
+
+
 (function(){
     var app = angular.module("mainApp",[]);
 
@@ -8,35 +10,48 @@
         $scope.length = 2;
         $scope.direction = "east";
 
-
-        $scope.gameStatus = 0;
+        var server = "http://192.168.47.192:3000/api";
+       // $scope.gameStatus = 0;
 
         $scope.initWebsite = function(){
             $http({
                 method: 'GET',
-                url: '/game'
+                url: server + '/game'
             }).then(function successCallback(response) {
-                $scope.gameStatus = response['status'];
+//console.log(response);
+                $scope.gameStatus = response.data.status;
+               // $scope.gridSize = response.data["gridSize"];
                 if(response['status'] == 2){
                     window.location = "./gridGame.html"
                 }
+                $scope.gridSize = response.data["gridSize"];
+                var array = [];
+                for( var i = 1; i <= $scope.gridSize; i++){
+                    array.push(i);
+                }
+                $scope.gridArray = array ;
+                console.log(response);
+/*                for( var i = 1; i <= $scope.gridSize; i++){
+                    array.push(i);
+                }
+                $scope.gridArray = array ;*/
 
             }, function errorCallback(response) {
 
             });
         };
-
+        $scope.initWebsite();
         //word /game
       //  $scope.maxPlayers = 8;
         $scope.startNewGame = function(maxPlayers){
 
        // console.log(maxPlayers);
-            $http.post('./test.json',{
+            $http.post(server + '/game',{
                 maxPlayers: maxPlayers
             }).success(function(data){
 
                 var array = [];
-
+                console.log(data['gridSize']);
                 $scope.gridSize = data["gridSize"];
 
                 for( var i = 1; i <= $scope.gridSize; i++){
@@ -44,15 +59,21 @@
                 }
                 $scope.gridArray = array ;
                 //console.log( $scope.gridArray);
-                $scope.gameStatus = 1;
+                $scope.gameStatus = data.status;
             });
         };
+
         var boat2IsSet = false;
         var boat3isSet = false;
         var boat5isSet = false;
         var boatsFullArray = [];
         var newBoatArray = [];
         var newBoatOk = true;
+
+        var currentBoat = {};
+        var allBoats = [];
+
+
 
 
         $scope.set_boat = function(x,y,direction,lengthboat){
@@ -114,8 +135,18 @@
                         $('.' + newBoatArray[i]).addClass("boat");
                     }
 
+                         currentBoat = {
+                            x: x,
+                             y: y,
+                             direction: direction,
+                             length: lengthboat
+                        };
+
+                    allBoats.push(currentBoat);
+
+
                 }
-                
+
                 newBoatArray = [];
                 
             };
@@ -151,6 +182,10 @@
                     newBoatOk = true;
                 }
             }
+            if(boat2IsSet && boat3isSet && boat5isSet){
+               // some code
+            }
+
 
 
 
@@ -158,12 +193,32 @@
            // console.log(y);
            // console.log(y);
            // console.log("x" + x + " y" + y );
+        };
+
+        $scope.post_boats = function(){
+            console.log('check chekc');
+            if(boat2IsSet && boat3isSet && boat5isSet){
+                console.log('alle boten zijn gezet');
+               // console.log(allBoats);
+                completeList = [{boats: allBoats}];
+                $http.post(server + '/game/player',{
+                  boats: allBoats
+                }).success(function(data){
+
+                     $scope.playerId = data['playerId'];
+
+                });
+            }
+        };
+
+        $scope.reset_boats = function(){
+             boat2IsSet = false;
+             boat3isSet = false;
+             boat5isSet = false;
+             boatsFullArray = [];
+            $("*").removeClass('boat');
+
         }
-
-        $scope.post_boat = function(x,y,direction,lengthboat){
-
-        }
-
 
     }]);
 
