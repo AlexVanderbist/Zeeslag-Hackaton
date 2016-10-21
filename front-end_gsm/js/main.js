@@ -1,6 +1,8 @@
 /**
  * Created by Rowan on 21-10-2016.
  */
+
+
 (function(){
     var app = angular.module("mainApp",[]);
 
@@ -8,13 +10,13 @@
         $scope.length = 2;
         $scope.direction = "east";
 
-
+        var server = "http://192.168.47.192:3000/api";
         $scope.gameStatus = 0;
 
         $scope.initWebsite = function(){
             $http({
                 method: 'GET',
-                url: '/game'
+                url: server + '/game'
             }).then(function successCallback(response) {
                 $scope.gameStatus = response['status'];
                 if(response['status'] == 2){
@@ -31,7 +33,7 @@
         $scope.startNewGame = function(maxPlayers){
 
        // console.log(maxPlayers);
-            $http.post('/game',{
+            $http.post(server + '/game',{
                 maxPlayers: maxPlayers
             }).success(function(data){
 
@@ -184,7 +186,7 @@
             if(boat2IsSet && boat3isSet && boat5isSet){
                // console.log(allBoats);
             completeList = [{boats: allBoats}];
-            $http.post('/game/player',{
+            $http.post(server + '/game/player',{
               boats: allBoats
             }).success(function(data){
 

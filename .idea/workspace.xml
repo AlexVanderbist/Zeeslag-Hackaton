@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6698244d-9e2b-4e43-bb84-45de5d889ef2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end_gsm/index.html" afterPath="$PROJECT_DIR$/front-end_gsm/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end_gsm/js/main.js" afterPath="$PROJECT_DIR$/front-end_gsm/js/main.js" />
     </list>
     <ignored path="Zeeslag-Hackaton.iws" />
@@ -70,11 +69,11 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/front-end_gsm/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5449438">
-              <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.5146067">
+              <caret line="188" column="32" selection-start-line="188" selection-start-column="32" selection-end-line="188" selection-end-column="32" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
-                <element signature="e#1657#5406#0" expanded="false" />
+                <element signature="e#1731#5480#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -364,11 +363,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end_gsm/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5449438">
-          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5146067">
+          <caret line="188" column="32" selection-start-line="188" selection-start-column="32" selection-end-line="188" selection-end-column="32" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
-            <element signature="e#1657#5406#0" expanded="false" />
+            <element signature="e#1731#5480#0" expanded="false" />
           </folding>
         </state>
       </provider>
