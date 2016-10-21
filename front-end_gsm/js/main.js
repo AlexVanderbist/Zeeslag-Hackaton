@@ -11,23 +11,36 @@
         $scope.direction = "east";
 
         var server = "http://192.168.47.192:3000/api";
-        $scope.gameStatus = 0;
+       // $scope.gameStatus = 0;
 
         $scope.initWebsite = function(){
             $http({
                 method: 'GET',
                 url: server + '/game'
             }).then(function successCallback(response) {
-                $scope.gameStatus = response['status'];
+//console.log(response);
+                $scope.gameStatus = response.data.status;
+               // $scope.gridSize = response.data["gridSize"];
                 if(response['status'] == 2){
                     window.location = "./gridGame.html"
                 }
+                $scope.gridSize = response.data["gridSize"];
+                var array = [];
+                for( var i = 1; i <= $scope.gridSize; i++){
+                    array.push(i);
+                }
+                $scope.gridArray = array ;
+                console.log(response);
+/*                for( var i = 1; i <= $scope.gridSize; i++){
+                    array.push(i);
+                }
+                $scope.gridArray = array ;*/
 
             }, function errorCallback(response) {
 
             });
         };
-
+        $scope.initWebsite();
         //word /game
       //  $scope.maxPlayers = 8;
         $scope.startNewGame = function(maxPlayers){
@@ -38,7 +51,7 @@
             }).success(function(data){
 
                 var array = [];
-
+                console.log(data['gridSize']);
                 $scope.gridSize = data["gridSize"];
 
                 for( var i = 1; i <= $scope.gridSize; i++){
@@ -46,13 +59,13 @@
                 }
                 $scope.gridArray = array ;
                 //console.log( $scope.gridArray);
-                $scope.gameStatus = 1;
+                $scope.gameStatus = data.status;
             });
         };
 
-        var boat2IsSet = false;
-        var boat3isSet = false;
-        var boat5isSet = false;
+        $scope.boat2IsSet = false;
+        $scope.boat3isSet = false;
+        $scope.boat5isSet = false;
         var boatsFullArray = [];
         var newBoatArray = [];
         var newBoatOk = true;
@@ -170,7 +183,7 @@
                 }
             }
             if(boat2IsSet && boat3isSet && boat5isSet){
-                console.log(allBoatsSec[0]);
+               // some code
             }
 
 
@@ -183,19 +196,28 @@
         };
 
         $scope.post_boats = function(){
-            if(boat2IsSet && boat3isSet && boat5isSet){
+            console.log('check chekc');
+            if( $scope.boat2IsSet &&  $scope.boat3isSet &&  $scope.boat5isSet){
+                console.log('alle boten zijn gezet');
                // console.log(allBoats);
-            completeList = [{boats: allBoats}];
-            $http.post(server + '/game/player',{
-              boats: allBoats
-            }).success(function(data){
+                completeList = [{boats: allBoats}];
+                $http.post(server + '/game/player',{
+                  boats: allBoats
+                }).success(function(data){
 
-                 $scope.playerId = data['playerId'];
+                     $scope.playerId = data['playerId'];
 
-            });
+                });
             }
-        }
+        };
 
+        $scope.reset_boats = function(){
+            $scope.boat2IsSet = false;
+            $scope.boat3isSet = false;
+            $scope.boat5isSet = false;
+             boatsFullArray = [];
+
+        }
 
     }]);
 
