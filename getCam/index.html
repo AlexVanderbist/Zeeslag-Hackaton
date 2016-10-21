@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>tracking.js - color with camera</title>
+	<link rel="stylesheet" href="assets/demo.css">
+
+	<script src="assets/tracking-min.js"></script>
+	<script src="assets/stats.min.js"></script>
+	<script src="assets/color_camera_gui.js"></script>
+
+	<style>
+		video, canvas
+		{
+			margin-left: 100px;
+			margin-top: 35px;
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+<div class="demo-title">
+	<p><a href="http://trackingjs.com" target="_parent">tracking.js</a> ï¼ choose the colors you want to detect through
+		the controls on the right</p>
+</div>
+
+<div class="demo-frame">
+	<div class="demo-container">
+		<video id="video" width="600" height="450" preload autoplay loop muted controls></video>
+		<canvas id="canvas" width="600" height="450"></canvas>
+	</div>
+</div>
+
+<script>
+	function between(toCheck, min, max) {
+		return toCheck >= min && toCheck <= max;
+	}
+
+	var color;
+	window.onload = function () {
+		var video = document.getElementById('video');
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext('2d');
+
+		tracking.ColorTracker.registerColor('red', function (r, g, b) {
+			var threshold = 75,
+				dx = r - 255,
+				dy = g - 0,
+				dz = b - 0;
+			if ((r - g) >= threshold && (b - g) >= threshold) {
+				return true;
+			}
+			return dx * dx + dy * dy + dz * dz < 19600;
+		});
+		tracking.ColorTracker.registerColor('blue', function (r, g, b) {
+			var threshold = 75,
+				dx = r - 0,
+				dy = g - 0,
+				dz = b - 255;
+			if ((r - g) >= threshold && (b - g) >= threshold) {
+				return true;
+			}
+			return dx * dx + dy * dy + dz * dz < 19600;
+		});
+
+		color = new tracking.ColorTracker(['blue', 'yellow', 'red']);
+
+		color.setMinDimension(10);
+		color.setMinGroupSize(40);
+
+		tracking.track('#video', color, {camera: true});
+
+		color.on('track', function (event) {
+			context.clearRect(0, 0, canvas.width, canvas.height);
+
+			event.data.forEach(function (rect) {
+				if (rect.color === 'custom') {
+					rect.color = color.customColor;
+				}
+
+				context.strokeStyle = rect.color;
+				context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+				context.font = '11px Helvetica';
+				context.fillStyle = "#fff";
+				context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+				context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+			});
+		});
+
+		initGUIControllers(color);
+	};
+
+	document.body.onkeyup = function (e) {
+		if (e.keyCode == 32) {
+			console.log("get coordinate");
+			color.once("track", function (event) {
+				if (event.data.length == 5) {
+					console.log("all colors present");
+					//Find the red color
+					var corners = [];
+					var other_corners = [];
+					var target;
+					event.data.forEach(function (rect) {
+						console.log(rect);
+						if (rect.color == "red") {
+							corners.LT = rect;
+						}
+						else if (rect.color == "blue") {
+							target = rect;
+						}
+						else {
+							other_corners.push(rect);
+						}
+					});
+
+					//Get position of corners
+					other_corners.forEach(function (corner) {
+						corners[getOrientation(corner)] = corner;
+					});
+
+					//Get the right coordinate of corner of grid
+					for (var cornerPlace in corners) {
+						var curCorner = corners[cornerPlace];
+						switch (cornerPlace) {
+							case "LT":
+								corners[cornerPlace].realX = curCorner.x + curCorner.width;
+								corners[cornerPlace].realY = curCorner.y + curCorner.height;
+								break;
+							case "RT":
+								corners[cornerPlace].realX = curCorner.x;
+								corners[cornerPlace].realY = curCorner.y + curCorner.height;
+								break;
+							case "LB":
+								corners[cornerPlace].realX = curCorner.x + curCorner.width;
+								corners[cornerPlace].realY = curCorner.y;
+								break;
+							case "RB":
+								corners[cornerPlace].realX = curCorner.x;
+								corners[cornerPlace].realY = curCorner.y;
+								break;
+						}
+					}
+					target.realX = target.x + target.width / 2;
+					target.realY = target.y + target.height / 2;
+
+					console.log(corners);
+					console.log(target);
+
+					var linksBovenX = corners.LT.realX;
+					var linksBovenY = corners.LT.realY;
+
+					var rechtOnderX = corners.RB.realX;
+					var rechtOnderY = corners.RB.realY;
+
+					var newCoorX = target.realX;
+					var newCoorY = target.realY;
+
+					var grid = 10;
+
+					/*************************/
+
+					var coor1x = 10;  //10
+					var coor1y = 10;  //10
+
+					var coor2x = 20;  //20
+					var coor2y = 10;  //10
+
+					var coor3x = 10;  //20
+					var coor3y = 20;  //10
+
+					var coor4x = 20;  //20
+					var coor4y = 20;  //20
+
+
+					function setGrid() {
+						coor1x = linksBovenX;  //10
+						coor1y = linksBovenY;  //10
+
+						coor2x = rechtOnderX;  //20
+						coor2y = linksBovenY;  //10
+
+						coor3x = linksBovenX;  //20
+						coor3y = rechtOnderY;  //10
+
+						coor4x = rechtOnderX;  //20
+						coor4y = rechtOnderY;  //20
+					}
+					setGrid();
+					coorGrid();
+					function coorGrid() {
+
+						var width = (coor2x - coor1x) / grid;  //2
+						var height = (coor3y - coor1y) / grid; //2
+
+						var newCoorxGrid = newCoorX - coor1x;  // 15 - 10 -> 5
+						var newCooryGrid = newCoorY - coor1y;  // 12 - 10 -> 2
+
+						var x = newCoorxGrid / width;
+						var y = newCooryGrid / height;
+
+						console.log("###################");
+						console.log(Math.ceil(x) + "   " + Math.ceil(y));
+					}
+
+					function getOrientation(corner) {
+						var orientation = "invalid";
+						// check orientation
+
+						if (between(corners.LT.x, corner.x - 15, corner.x + 15)) {
+							orientation = "LB";
+						}
+						else if (between(corners.LT.y, corner.y - 15, corner.y + 15)) {
+							orientation = "RT";
+						}
+						else {
+							orientation = "RB";
+						}
+
+						return orientation;
+					}
+				}
+			});
+		}
+	};
+</script>
+
+</body>
+</html>
