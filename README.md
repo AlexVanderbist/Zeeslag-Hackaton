@@ -47,23 +47,15 @@
   returned: HTTP 200 
   
   ```
-  { 
-    rows: [ 
-      { 
-        columns: 
-        [ 
-          { 
-            status: (int, 0=none, 1=miss, 2=hit), 
-            players: 
-              [
-                {id:(int), photo:(int)},
-                { ... }
-              ] 
-          },
-          { ... }
-        ] 
-      }, 
-      { ... }
-    ] 
-  }
+  [
+    {
+      x: (int),
+      y: (int),
+      status: (int, 1 miss, 2 hit),
+      players: 
+      [
+        {...},{...}
+      ]
+    }
+  ]
   ```
