@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
-    <!--   <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>-->
+
     <script type="text/javascript" src="js/main.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -69,8 +70,8 @@
         <h1>You entered: {{direction}} en  {{length}}</h1>
 
         <table class="grid">
-            <tr ng-repeat="x in [1, 2, 3, 4]">
-                <td ng-click="set_boat(x, y, direction, length)" ng-class="{boat: y==2}" ng-repeat="y in [1, 2, 3, 4]">{{x}}{{y}}</td>
+            <tr ng-repeat="y in [1, 2, 3, 4]">
+                <td ng-repeat="x in [1, 2, 3, 4]" ng-click="set_boat(x, y, direction, length)" class="{{x}}{{y}}">{{x}}{{y}}</td>
             </tr>
         </table>
 
