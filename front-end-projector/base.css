@@ -1,0 +1,13 @@
+body table {
+  border: 1px solid #fff;
+  text-align: center;
+  color: #fff;
+  background-color: black; }
+body td {
+  border: 1px solid #fff;
+  width: 70px; }
+body tr {
+  height: 70px;
+  border: 1px solid #fff; }
+
+/*# sourceMappingURL=base.css.map */

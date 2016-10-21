@@ -1,0 +1,23 @@
+$grite: 10;
+$heigth: 700px;
+
+
+body{
+
+
+
+  table {
+    border: 1px solid #fff;
+    text-align: center;
+    color: #fff;
+    background-color: black;
+  }
+  td {
+    border: 1px solid #fff;
+    width: $heigth / $grite;
+  }
+  tr{
+    height: $heigth / $grite;
+    border: 1px solid #fff;
+  }
+}
