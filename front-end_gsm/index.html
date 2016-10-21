@@ -10,7 +10,57 @@
 
     <title></title>
 </head>
-<body>
-
+<body ng-app="mainApp">
+    
+    <div ng-controller="MainController">
+        
+        
+        <div class="game_none" ng-if="gameStatus == 0">
+            
+            <form>
+                <div>
+                    <label for="max_players">Aantal spelers:</label>
+                    <input type="number" name="max_players" id="max_players">
+                </div>
+                <div>
+                    <input type="submit" value="Game aanmaken">
+                </div>
+            </form>
+            
+        </div>
+        
+        <div class="game_created" ng-if="gameStatus == 1">
+            
+            <form>
+                <div>
+                    <label for="photo">Foto:</label>
+                    <input type="file" name="photo" id="photo">
+                </div>
+                
+                <div>
+                    <input type="submit" value="Let's go">
+                </div>
+                
+            </form>
+            
+            
+            
+            <table>
+                <tr ng-repeat="i in [1, 2, 3, 4]">
+                    <td>i</td>
+                </tr>
+            </table>
+            
+            
+        </div>
+        
+        <div class="game_started" ng-if="gameStatus == 2">
+            
+        </div>
+        
+        
+    </div>
+    
+    
 </body>
 </html>
