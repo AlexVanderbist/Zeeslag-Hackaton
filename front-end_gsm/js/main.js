@@ -63,9 +63,9 @@
             });
         };
 
-        $scope.boat2IsSet = false;
-        $scope.boat3isSet = false;
-        $scope.boat5isSet = false;
+        var boat2IsSet = false;
+        var boat3isSet = false;
+        var boat5isSet = false;
         var boatsFullArray = [];
         var newBoatArray = [];
         var newBoatOk = true;
@@ -197,7 +197,7 @@
 
         $scope.post_boats = function(){
             console.log('check chekc');
-            if( $scope.boat2IsSet &&  $scope.boat3isSet &&  $scope.boat5isSet){
+            if(boat2IsSet && boat3isSet && boat5isSet){
                 console.log('alle boten zijn gezet');
                // console.log(allBoats);
                 completeList = [{boats: allBoats}];
@@ -212,10 +212,11 @@
         };
 
         $scope.reset_boats = function(){
-            $scope.boat2IsSet = false;
-            $scope.boat3isSet = false;
-            $scope.boat5isSet = false;
+             boat2IsSet = false;
+             boat3isSet = false;
+             boat5isSet = false;
              boatsFullArray = [];
+            $("*").removeClass('boat');
 
         }
 
