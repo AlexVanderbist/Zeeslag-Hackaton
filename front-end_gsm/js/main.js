@@ -62,6 +62,8 @@
             var boaty = [];
 
 
+
+
             var preloop  = function(){
                 for(var i = 0; i < lengthboat ; i++){
 
@@ -94,23 +96,24 @@
                     //
                     if(boatsFullArray.indexOf(newBoatArray[i]) != -1){
                         //
-                        console.log(newBoatArray[i] + " bestaat al!!");
+                       // console.log(newBoatArray[i] + " bestaat al!!");
                         newBoatOk = false;
                         break;
                     }
                     else {
-                        console.log(newBoatArray[i] + " bestaat nog niet...");
+                        //console.log(newBoatArray[i] + " bestaat nog niet...");
                         //boatsFullArray.push(newBoatArray[i]);
                         //$('.' + newBoatArray[i]).addClass("boat");
                     }
                 }
                 console.log("newbOK " + newBoatOk);
                 if(newBoatOk) {
-                    console.log("boot mag toegvoegd worden");
+                   // console.log("boot mag toegvoegd worden");
                     for(var i = 0; i < newBoatArray.length; i++) {
                         boatsFullArray.push(newBoatArray[i]);
                         $('.' + newBoatArray[i]).addClass("boat");
                     }
+
                 }
                 
                 newBoatArray = [];
@@ -155,6 +158,10 @@
            // console.log(y);
            // console.log(y);
            // console.log("x" + x + " y" + y );
+        }
+
+        $scope.post_boat = function(x,y,direction,lengthboat){
+
         }
 
 
