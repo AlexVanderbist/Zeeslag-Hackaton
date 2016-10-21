@@ -8,7 +8,9 @@
 ### GSM front-end
 
 - GET /game/player/ based on IP 
+
   returned: HTTP 200 `{boats: [ {x: (int), y: (int), length: (int), direction: (int, 1 east, 2 south)}, {}, {} ]}`
+  
   returned: HTTP 400 dan is het geen speler in dit spel `{error:(string, not_a_player), message: (string)}`
 
 #### Nieuw spel starten
@@ -30,11 +32,15 @@
 ### Beamer front-end
   
 - GET /game/grid
+
   returned: HTTP 200 
-  ```{ rows: [ 
+  
+  ```
+  { rows: [ 
     { columns: [ 
       { status: (int, 0=none, 1=hit), players: [] },
       { ... }] 
     }, 
     { ... }
-  ] }```
+  ] }
+  ```
