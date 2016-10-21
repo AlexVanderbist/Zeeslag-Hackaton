@@ -1,0 +1,19 @@
+html, body {
+    margin: 0;
+    font-family: "Calibri", sans-serif;
+}
+
+
+.grid {
+    border-collapse: collapse;
+}
+
+.grid tr td {
+    background-color: #5d8;
+    padding: 15px;
+    border: 1px #d9d9d9 solid;
+}
+
+.grid tr td.boat {
+    background-color: #c55;
+}

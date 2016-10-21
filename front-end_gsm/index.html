@@ -17,10 +17,10 @@
         
         <div class="game_none" ng-if="gameStatus == 0">
             
-            <form>
+            <form ng-submit="startNewGame(maxPlayers)">
                 <div>
                     <label for="max_players">Aantal spelers:</label>
-                    <input type="number" name="max_players" id="max_players">
+                    <input type="number" name="max_players" id="max_players" ng-model="maxPlayers">
                 </div>
                 <div>
                     <input type="submit" value="Game aanmaken">
@@ -43,13 +43,37 @@
                 
             </form>
             
+            <div>
+                <div>
+                    <input ng-model="direction" type="radio" value="east" id="east" name="direction" ng-checked="true">
+                    <label for="east">Horizontaal</label>
+                </div>
+                <div>
+                    <input ng-model="direction" type="radio" value="south" id="south" name="direction">
+                    <label for="south">Verticaal</label>
+                </div>
+                <div>
+                    <input ng-model="length" type="radio" value="2" id="2" name="2">
+                    <label for="2">2</label>
+                </div>
+                <div>
+                    <input ng-model="length" type="radio" value="3" id="3" name="3">
+                    <label for="3">3</label>
+                </div>
+                <div>
+                    <input ng-model="length" type="radio" value="5" id="5" name="5">
+                    <label for="5">5</label>
+                </div>
+            </div>
             
+            <h1>You entered: {{direction}} en  {{length}}</h1>
             
-            <table>
-                <tr ng-repeat="i in [1, 2, 3, 4]">
-                    <td>i</td>
+            <table class="grid">
+                <tr ng-repeat="x in [1, 2, 3, 4]">
+                    <td ng-click="MainController.set_boat(x, y, direction, length)" ng-class="{boat: y==2}" ng-repeat="y in [1, 2, 3, 4]">{{x}}{{y}}</td>
                 </tr>
             </table>
+            
             
             
         </div>
