@@ -1,29 +1,54 @@
 html, body {
     margin: 0 auto;
     font-family: "Calibri", sans-serif;
-
+    background-color: #153865;
+    color: #7CBFB8;
+    font-size: 100%;
 }
-.mainIndex{
 
+.mainIndex{
     width: 100%;
 }
-.indexContent{
 
-    width: 40%;
+.indexContent{
+    width: 60%;
     margin: 0 auto;
     margin-top: 5%;
 }
+
+
+h1 {
+    text-align: center;
+}
+
 
 .game_none form{
     text-align: center;
     width: 100%;
 }
 
-.game_none form label{
+.game_none form label,
+.game_none form input {
     width: 100%;
 }
-.game_none form input{
-    width: 100%;
+
+
+.game_none form input {
+    padding: 5px 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.game_none form input[type="submit"] {
+    border: none;
+    background-color: #7CBFB8;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.game_none form input[type="submit"]:hover {
+    background-color: #308279;
 }
 
 
