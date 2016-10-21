@@ -5,6 +5,9 @@
     var app = angular.module("mainApp",[]);
 
     app.controller('MainController',['$rootScope','$scope','$http',function($rootScope,$scope,$http){
+        $scope.length = 2;
+        $scope.direction = "east";
+
 
         $scope.gameStatus = 1;
 
@@ -38,7 +41,25 @@
         };
 
         $scope.set_boat = function(x,y,direction,lengthboat){
+            var currentx =x;
+            var currenty =y;
+            var boatx = [];
+            var boaty = [];
+            for(var i = 0; i < lengthboat ; i++){
+                if(direction == "east"){
 
+                    boatx.push(currentx++);
+                    boaty.push(y);
+
+                }else if(direction == "south"){
+                    boatx.push(x);
+                    boaty.push(currenty++);
+
+                }
+            }
+           // console.log(y);
+           // console.log(y);
+           // console.log("x" + x + " y" + y );
         }
 
 
