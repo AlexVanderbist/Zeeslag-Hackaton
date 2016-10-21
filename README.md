@@ -45,11 +45,23 @@
   returned: HTTP 200 
   
   ```
-  { rows: [ 
-    { columns: [ 
-      { status: (int, 0=none, 1=hit), players: [] },
-      { ... }] 
-    }, 
-    { ... }
-  ] }
+  { 
+    rows: [ 
+      { 
+        columns: 
+        [ 
+          { 
+            status: (int, 0=none, 1=hit), 
+            players: 
+              [
+                {id:(int), photo:(int)},
+                { ... }
+              ] 
+          },
+          { ... }
+        ] 
+      }, 
+      { ... }
+    ] 
+  }
   ```
