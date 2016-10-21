@@ -6,6 +6,9 @@
 
 #### Nieuw spel starten
 
+- GET /game
+  returned HTTP 200 `{status: (int, 0 none, 1 started)}`
+
 - POST /game `{ players: (int) }`
 
   returned: HTTP 200 `{ grid: (int) }` 
