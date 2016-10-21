@@ -6,7 +6,7 @@
 
     app.controller('MainController',['$rootScope','$scope','$http',function($rootScope,$scope,$http){
 
-        $scope.gameStatus = 0;
+        $scope.gameStatus = 1;
 
         $scope.initWebsite = function(){
             $http({
