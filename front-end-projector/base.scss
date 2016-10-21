@@ -1,23 +1,120 @@
 $grite: 10;
-$heigth: 700px;
+$heigth: 800px;
+$explod: 100;
 
-
-body{
-
-
-
+body {
+  background-image: url("background.jpg");
   table {
     border: 1px solid #fff;
     text-align: center;
     color: #fff;
     background-color: black;
+    position: absolute;
+    img {
+      height: $heigth/$grite;
+      width: $heigth/$grite;
+      border-radius: 50%;
+      position: absolute;
+      left: 0;
+      top:0;
+      opacity: 0.5;
+    }
+    .reflect{
+      transform: rotate(180deg);
+    }
   }
   td {
     border: 1px solid #fff;
     width: $heigth / $grite;
+    position: relative;
   }
-  tr{
+  tr {
+    position: relative;
     height: $heigth / $grite;
     border: 1px solid #fff;
+    position: relative;
+    border-radius: 50px;
+  }
+}
+.players{
+  color: #fff;
+  background-color: #000;
+  border-radius: 150px 0px 0px 150px;
+  margin-top: 5px;
+  font-size: 1.2em;
+
+  .player_pictuur{
+    max-width: 125px;
+    max-height: 125px;
+    border-radius: 50%;
+    border: 5px solid black;
+margin-left: -25px;
+  }
+  .playr_content{
+    margin-top: 50px;
+  }
+
+}
+
+
+$boxes: 100;
+#wrap {
+  margin-top: $grite /2;
+  margin-left: $heigth / $grite /2;
+  position: absolute;
+
+}
+
+div.box {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  //-webkit-filter: blur(1px);
+  position: absolute;
+}
+
+@for $i from 1 through $boxes {
+  @keyframes anim-#{$i} {
+    0% {
+      opacity: 1;
+      top: 50%;
+      left: 50%;
+    }
+    50% {
+      @if $i <25 {
+        top: random($explod)+px;
+        left: random($explod)+px;
+      } @else if $i <50 {
+        top: random($explod)+px;
+        left: -1 * random($explod)+px;
+      } @else if $i <75 {
+        top: -1 *  random($explod)+px;
+        left: random($explod)+px;
+      } @else {
+        top: -1*  random($explod)+px;
+        left: -1* random($explod)+px;
+      }
+
+    }
+    99% {
+      top: 50%;
+      left: 50%;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  div.box {
+    &:nth-child(#{$i}) {
+      left: $i * 10px;
+      animation-duration: 1.2s;
+      animation-name: anim-#{$i};
+      animation-iteration-count: 1;
+      animation-direction: alternate;
+      animation-timing-function: ease-in-out;
+      background: hsla(10 * $i, 100%, 50%, 1);
+      opacity: 0;
+    }
   }
 }
