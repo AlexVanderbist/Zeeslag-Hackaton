@@ -13,6 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+Route::get('game', function ()    {
+    return response()->json([
+        'status' => 0,
+        'gridSize' => 0, 
+        'players' => 0, 
+        'maxPlayers' => 0,
+        'currentPlayer' => 0
+    ]);
+});
+
+// Route::get('/user', function (Request $request) {
+//     return $request->user();
+// })->middleware('auth:api');
