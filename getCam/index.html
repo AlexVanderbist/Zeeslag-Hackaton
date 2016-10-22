@@ -205,8 +205,8 @@
 						console.log(grid + "  " + newCooryGrid);
 
 						console.log("###################");
-						var calculatedX = Math.ceil(x);
-						var calculatedY = Math.ceil(y);
+						var calculatedX = grid - Math.ceil(y);
+						var calculatedY = Math.ceil(x);
 						console.log(calculatedX + "   " + calculatedY);
 
 						sendFireRequest(calculatedX, calculatedY);
