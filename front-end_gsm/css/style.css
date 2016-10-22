@@ -130,8 +130,8 @@ h1 {
 
 /* gridGame.html */
 
-.game_busy td.boat {
-    background-color: yellow;
+.game_busy tr td.boat {
+    background-color: #a2a252;
 }
 
 .game_busy td.destroyed {
