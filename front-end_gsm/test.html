@@ -34,10 +34,10 @@
 
         <div class="game_created" ng-if="gameStatus == 1" ng-hide="waitTilStart">
 
-            <form enctype='multipart/form-data'>
+            <form enctype='multipart/form-data' >
                 <div>
                     <label for="photo">Foto:</label>
-                    <input ng-model="photo" type="file" name="photo" id="photo">
+                    <input ng-model="photo" type="file" name="photo" id="photo" onchange="angular.element(this).scope().uploadavtar(this.files)">
 
                 </div>
 

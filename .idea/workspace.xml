@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6698244d-9e2b-4e43-bb84-45de5d889ef2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end_gsm/js/main.js" afterPath="$PROJECT_DIR$/front-end_gsm/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end_gsm/test.html" afterPath="$PROJECT_DIR$/front-end_gsm/test.html" />
     </list>
     <ignored path="Zeeslag-Hackaton.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,8 +38,8 @@
       <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end_gsm/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.5">
-              <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
+            <state vertical-scroll-proportion="-6.75">
+              <caret line="39" column="144" selection-start-line="39" selection-start-column="144" selection-end-line="39" selection-end-column="144" />
               <folding />
             </state>
           </provider>
@@ -69,11 +70,11 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/front-end_gsm/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49532712">
-              <caret line="216" column="39" selection-start-line="216" selection-start-column="39" selection-end-line="216" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.68457943">
+              <caret line="222" column="55" selection-start-line="222" selection-start-column="55" selection-end-line="222" selection-end-column="55" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
-                <element signature="e#2435#6167#0" expanded="false" />
+                <element signature="e#2467#6199#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -331,14 +332,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end_gsm/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.75">
-          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/front-end_gsm/js/angular.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -357,21 +350,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/front-end_gsm/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.75">
+          <caret line="60" column="16" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/front-end_gsm/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5">
-          <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
+        <state vertical-scroll-proportion="-6.75">
+          <caret line="39" column="144" selection-start-line="39" selection-start-column="144" selection-end-line="39" selection-end-column="144" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end_gsm/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49532712">
-          <caret line="216" column="39" selection-start-line="216" selection-start-column="39" selection-end-line="216" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.68457943">
+          <caret line="222" column="55" selection-start-line="222" selection-start-column="55" selection-end-line="222" selection-end-column="55" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
-            <element signature="e#2435#6167#0" expanded="false" />
+            <element signature="e#2467#6199#0" expanded="false" />
           </folding>
         </state>
       </provider>
