@@ -233,27 +233,29 @@ var appRouter = function(app) {
         app.game.players.forEach(function(player, playerIndex){
             var status = 1;
             // loop over boats
-            app.game.players[playerIndex].boats.forEach(function(boat, boatIndex){
-                var boatCoords = getCoordsForBoats([boat]);
+            if(app.game.players[playerIndex].boats.length) {
+                app.game.players[playerIndex].boats.forEach(function(boat, boatIndex){
+                    var boatCoords = getCoordsForBoats([boat]);
 
-                // check for a hit
-                if(containsCoords(coords, boatCoords)) {
-                    console.log('we have a hit on ', coords, boat.x, boat.y);
-                    // HIT! :D
-                    status = 2;
-                    app.game.players[playerIndex].boats[boatIndex].hits++;
-                    
-                    //checkBoatHits(boat);
-                    if(boat.hits == boat.length) {
-                        // ship down!
-                        addAction('ship_sunk', app.game.players[playerIndex].playerId, app.game.currentPlayer);
+                    // check for a hit
+                    if(containsCoords(coords, boatCoords)) {
+                        console.log('we have a hit on ', coords, boat.x, boat.y);
+                        // HIT! :D
+                        status = 2;
+                        app.game.players[playerIndex].boats[boatIndex].hits++;
+                        
+                        //checkBoatHits(boat);
+                        if(boat.hits == boat.length) {
+                            // ship down!
+                            addAction('ship_sunk', app.game.players[playerIndex].playerId, app.game.currentPlayer);
 
-                        // check other boats
-                        // TODO
+                            // check other boats
+                            // TODO
+                        }
                     }
-                }
 
-            }, this);
+                }, this);
+            }
 
             if(status == 2) {
                 var playerWithoutBoats = player;
