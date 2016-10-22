@@ -41,7 +41,7 @@ angular.module("myapp", [])
                                 }
                             }
                             if(response.data[i].status == 1) {
-                                $("."+response.data[i].x + +response.data[i].y).append("<img class='img' src='nope.jpg'>");
+                                $("."+response.data[i].x + +response.data[i].y).append("<img class='img greyimg' src='nope.jpg'>");
                             }
                         }
                     }
