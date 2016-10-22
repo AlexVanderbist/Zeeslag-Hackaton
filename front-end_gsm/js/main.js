@@ -233,7 +233,7 @@
                 // or server returns response with an error status.
             });
         };
-        $scope.post_boats = function () {
+        $scope.post_boats = function (pictureInput) {
 
 
 
@@ -247,14 +247,19 @@
                     //withCredentials: true,
                     //headers: {'Content-Type': undefined },
                     //transformRequest: angular.identity,
-                    boats: allBoats,
-                    image: $scope.photo
+                    boats: allBoats
+
 
 
                 }).success(function (data) {
+
+
+
+
                     statusInterval();
                     $scope.waitTilStart = true;
                     $scope.playerId = data['playerId'];
+
 
 
                 });
@@ -275,7 +280,7 @@
                 method: 'GET',
                 url: server + '/game/player'
             }).then(function successCallback(response) {
-
+                $scope.playerID = response.data.playerId;
                 var status = $scope.gameStatus;
 
                 if (status == 2 && response.data.playerId) {
