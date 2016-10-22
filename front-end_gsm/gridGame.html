@@ -7,19 +7,26 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Game</title>
 </head>
 <body ng-app="mainApp">
-    <div ng-controller="MainController">
-        <h1>Zeeslag: Let's battle</h1>
+    <div class="mainIndex">
+
+        <div class="indexContent"  ng-controller="MainController">
+       
+            <div class="game_busy">
+                <h1>Zeeslag: Let's battle</h1>
+
+                <table class="grid">
+                    <tr ng-repeat="y in gridArray">
+                        <td ng-repeat="x in gridArray" ng-click="set_boat(x, y, direction, length)">{{x}}{{y}}</td>
+                    </tr>
+                </table>
+            </div>
         
-        <table class="grid">
-             <tr ng-repeat="y in [1, 2, 3, 4]">
-                 <td ng-repeat="x in [1, 2, 3, 4]" ng-click="set_boat(x, y, direction, length)" ng-class="{boat: y==2}">{{x}}{{y}}</td>
-             </tr>
-         </table>
         
-        
+        </div>
     </div>
 </body>
 </html>

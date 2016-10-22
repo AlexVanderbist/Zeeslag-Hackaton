@@ -12,23 +12,31 @@ body {
     font-size: 100%;
 }
 
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
 .mainIndex{
     width: 100%;
+    font-size: 1.2em;
 }
 
 .indexContent{
     width: 60%;
     margin: 0 auto;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
-.game_none {
+.game_none,
+.game_created,
+.game_started,
+.game_busy {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5%;
 }
 
 
-.game_none form{
+.game_none form {
     text-align: center;
     width: 100%;
 }
@@ -38,9 +46,17 @@ h1 {
 }
 
 
-.game_none form label,
+.game_none form label {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+}
+
+
 .game_none form input {
     width: 70%;
+    margin: 0 auto;
+    display: block;
 }
 
 
@@ -57,6 +73,7 @@ h1 {
     cursor: pointer;
     color: #fff;
     margin-top: 10px;
+    font-size: inherit;
 }
 
 .game_none form input[type="submit"]:hover {
@@ -64,8 +81,25 @@ h1 {
 }
 
 
+
+
+.game_created form {
+    margin-bottom: 20px;
+}
+
+.game_created form label{
+    display: block;
+}
+
+.game_created .direction,
+.game_created .length {
+    width: 50%;
+    float: left;
+}
+
 .grid {
     border-collapse: collapse;
+    color: #fff;
 }
 
 .grid tr td {
@@ -78,14 +112,69 @@ h1 {
     background-color: #c55;
 }
 
+.game_created .buttons button {
+    width: 100%;
+    border: none;
+    background-color: #7CBFB8;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 10px;
+    font-size: inherit;
+    padding: 5px 0;
+}
+
+.game_created .buttons button:hover {
+    background-color: #308279;
+}
 
 
-@media screen and (max-width: 600px) {
+/* gridGame.html */
+
+.game_busy td.boat {
+    background-color: yellow;
+}
+
+.game_busy td.destroyed {
+    background-color: #c55;
+}
+
+/* CLEARFIX */
+.game_created .set_boats::before, .game_created .set_boats::after {
+    content: "";
+    line-height: 0;
+    display: table;
+}
+
+.game_created .setboats::after {
+    clear: both;
+}
+
+
+
+@media screen and (max-width: 750px) {
     
     body {
         background-size: 200% auto;
         background-position: center top;
     }
+    
+    .indexContent{
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .grid {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .grid tr td {
+        background-color: #5d8;
+        padding: 5px;
+        border: 1px #d9d9d9 solid;
+    }
+    
+    
 }
 
 

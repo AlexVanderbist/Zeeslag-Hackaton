@@ -9,8 +9,11 @@
     app.controller('MainController',['$rootScope','$scope','$http',function($rootScope,$scope,$http){
         $scope.length = 2;
         $scope.direction = "east";
-
+        $scope.waitTilStart = false;
         var server = "http://192.168.47.192:3000/api";
+
+
+
        // $scope.gameStatus = 0;
 
         $scope.initWebsite = function(){
@@ -18,11 +21,20 @@
                 method: 'GET',
                 url: server + '/game'
             }).then(function successCallback(response) {
-//console.log(response);
+
                 $scope.gameStatus = response.data.status;
+
+                    console.log('status ' + response.data['status']);
                // $scope.gridSize = response.data["gridSize"];
-                if(response['status'] == 2){
+                var str = location.pathname;
+                var n = str.lastIndexOf('/');
+                var result = str.substring(n+1);
+                if(response.data['status'] == 2 && result != "gridGame.html" ){
+
+           
                     window.location = "./gridGame.html"
+                }else{
+                    refreshStatus();
                 }
                 $scope.gridSize = response.data["gridSize"];
                 var array = [];
@@ -121,11 +133,24 @@
                         newBoatOk = false;
                         break;
                     }
-                    else {
-                        //console.log(newBoatArray[i] + " bestaat nog niet...");
-                        //boatsFullArray.push(newBoatArray[i]);
-                        //$('.' + newBoatArray[i]).addClass("boat");
+                    //this part is added *******************************************
+                    console.log("lengte is : " + newBoatArray.length);
+                    if(newBoatArray[i].length == 2) {
+                        var xPos = newBoatArray[i].substring(0,1);
+                        var yPos = newBoatArray[i].substring(1);
                     }
+                    else if(newBoatArray[i].length > 2) {
+                        var xPos = newBoatArray[i].substring(0,2);
+                        var yPos = newBoatArray[i].substring(2);
+                        console.log(xPos + " en " + yPos);
+                    }
+                    
+                    if(xPos > 8 || yPos > 8) {
+                        newBoatOk = false;
+                        break;
+                    }
+                    //this part above this is added ********************************
+                    
                 }
                 console.log("newbOK " + newBoatOk);
                 if(newBoatOk) {
@@ -194,18 +219,48 @@
            // console.log(y);
            // console.log("x" + x + " y" + y );
         };
+        $scope.uploadavtar = function(files){
+            console.log('upload');
+            var fd = new FormData();
+            //Take the first selected file
+            fd.append("file", files[0]);
 
+            $http.post(server + '/game/player', fd, {
+                withCredentials: false,
+                headers: {'Content-Type': undefined },
+                transformRequest: angular.identity
+            }).then(function successCallback(response) {
+                alert(response);
+                // this callback will be called asynchronously
+                // when the response is available
+            }, function errorCallback(response) {
+                alert(response);
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+        };
         $scope.post_boats = function(){
-            console.log('check chekc');
+
+
+          
+            //console.log('check chekc');
             if(boat2IsSet && boat3isSet && boat5isSet){
                 console.log('alle boten zijn gezet');
                // console.log(allBoats);
-                completeList = [{boats: allBoats}];
-                $http.post(server + '/game/player',{
-                  boats: allBoats
-                }).success(function(data){
 
-                     $scope.playerId = data['playerId'];
+                completeList = [{boats: allBoats }];
+                $http.post(server + '/game/player', {
+                    //withCredentials: true,
+                    //headers: {'Content-Type': undefined },
+                    //transformRequest: angular.identity,
+                    boats: allBoats
+
+
+
+                }).success(function(data){
+                        $scope.waitTilStart = true;
+                        $scope.playerId = data['playerId'];
+
 
                 });
             }
@@ -218,7 +273,39 @@
              boatsFullArray = [];
             $("*").removeClass('boat');
 
+        };
+        function refreshStatus(){
+
+            $http({
+                method: 'GET',
+                url: server + '/game/player'
+            }).then(function successCallback(response) {
+                var status = $scope.gameStatus;
+                if(status != 2 && response.data.playerId){
+                console.log();
+                $scope.waitTilStart = true;
+                }else{
+
+                }
+                console.log(response);
+            }, function errorCallback(response) {
+
+            });
         }
+
+
+       function statusInterval(){
+
+           setInterval(function(){
+
+           }, 3000);
+       }
+
+
+
+
+
+
 
     }]);
 

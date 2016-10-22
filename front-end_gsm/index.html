@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Zeeslag premium</title>
 </head>
@@ -16,7 +17,7 @@
     <div class="indexContent"  ng-controller="MainController">
         
         
-        <div class="game_none" ng-if="gameStatus == 0">
+        <div class="game_none" ng-if="gameStatus == 0" ng-hide="waitTilStart">
             
             <h1>Zeeslag premium!</h1>
             
@@ -32,7 +33,7 @@
             
         </div>
         
-        <div class="game_created" ng-if="gameStatus == 1">
+        <div class="game_created" ng-if="gameStatus == 1" ng-hide="waitTilStart">
             
             <form>
                 <div>
@@ -40,33 +41,40 @@
                     <input ng-model="photo" type="file" name="photo" id="photo">
                 </div>
                 
-                <div>
-                    <input type="submit" value="Let's go">
-                </div>
-                
             </form>
             
-            <div>
-                <div>
-                    <input ng-model="direction" type="radio" value="east" id="east" name="direction" ng-checked="true">
-                    <label for="east">Horizontaal</label>
+            <div class="set_boats">
+                
+                <h2>Zet je boten:</h2>
+               
+                <div class="direction">
+                    <h4>Richting:</h4>
+                    <div>
+                        <input ng-model="direction" type="radio" value="east" id="east" name="direction" ng-checked="true">
+                        <label for="east">Horizontaal</label>
+                    </div>
+                    <div>
+                        <input ng-model="direction" type="radio" value="south" id="south" name="direction">
+                        <label for="south">Verticaal</label>
+                    </div>
                 </div>
-                <div>
-                    <input ng-model="direction" type="radio" value="south" id="south" name="direction">
-                    <label for="south">Verticaal</label>
+                
+                <div class="length">
+                    <h4>Lengte:</h4>
+                    <div>
+                        <input ng-model="length" type="radio" value="2" id="2" name="2" ng-hide="boat2IsSet">
+                        <label for="2">2</label>
+                    </div>
+                    <div>
+                        <input ng-model="length" type="radio" value="3" id="3" name="3">
+                        <label for="3">3</label>
+                    </div>
+                    <div>
+                        <input ng-model="length" type="radio" value="5" id="5" name="5">
+                        <label for="5">5</label>
+                    </div>
                 </div>
-                <div>
-                    <input ng-model="length" type="radio" value="2" id="2" name="2" ng-hide="boat2IsSet">
-                    <label for="2">2</label>
-                </div>
-                <div>
-                    <input ng-model="length" type="radio" value="3" id="3" name="3">
-                    <label for="3">3</label>
-                </div>
-                <div>
-                    <input ng-model="length" type="radio" value="5" id="5" name="5">
-                    <label for="5">5</label>
-                </div>
+                
             </div>
             
             <h1>You entered: {{direction}} en  {{length}}</h1>
@@ -76,13 +84,19 @@
                     <td ng-repeat="x in gridArray" ng-click="set_boat(x, y, direction, length)" class="{{x}}{{y}}">{{x}}{{y}}</td>
                 </tr>
             </table>
-
-            <button ng-click="post_boats()">Zet boten </button>
+            
+            <div class="buttons">
+                <button ng-click="post_boats()">Zet boten</button>
+                <button ng-click="reset_boats()">Reset</button>
+            </div>
+            
             
             
             
         </div>
-        
+        <div ng-show="waitTilStart">
+            <h1> wacht tot tot iedereen zijn boten heeft gezet</h1>
+        </div>
         <div class="game_started" ng-if="gameStatus == 2">
             
             <div>
