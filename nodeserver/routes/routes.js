@@ -219,9 +219,11 @@ var appRouter = function(app) {
         // get grid square index
         //var index = app.grid.findIndex(square => square.x==coords.x && square.y==coords.y);
 
+        var index= null;
+
         app.grid.forEach(function(square, thisindex){
             if(square.x==coords.x && square.y==coords.y) {
-                var index = thisindex;
+                index = thisindex;
                 console.log("yo ",index);
         }
         },this);
