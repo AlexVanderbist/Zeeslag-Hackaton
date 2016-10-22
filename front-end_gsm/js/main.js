@@ -130,11 +130,24 @@
                         newBoatOk = false;
                         break;
                     }
-                    else {
-                        //console.log(newBoatArray[i] + " bestaat nog niet...");
-                        //boatsFullArray.push(newBoatArray[i]);
-                        //$('.' + newBoatArray[i]).addClass("boat");
+                    //this part is added *******************************************
+                    console.log("lengte is : " + newBoatArray.length);
+                    if(newBoatArray[i].length == 2) {
+                        var xPos = newBoatArray[i].substring(0,1);
+                        var yPos = newBoatArray[i].substring(1);
                     }
+                    else if(newBoatArray[i].length > 2) {
+                        var xPos = newBoatArray[i].substring(0,2);
+                        var yPos = newBoatArray[i].substring(2);
+                        console.log(xPos + " en " + yPos);
+                    }
+                    
+                    if(xPos > 8 || yPos > 8) {
+                        newBoatOk = false;
+                        break;
+                    }
+                    //this part above this is added ********************************
+                    
                 }
                 console.log("newbOK " + newBoatOk);
                 if(newBoatOk) {

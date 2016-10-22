@@ -37,7 +37,17 @@
 	}
 
 	var color;
+	var gridSize;
 	window.onload = function () {
+		console.log("==========send GET==========");
+		fetch('http://192.168.47.192:3000/api/game', {
+			method: 'GET'
+		}).then(function(response) {
+			return response.json()
+		}).then(function(json) {
+			gridSize = json.gridSize;
+		});
+
 		var video = document.getElementById('video');
 		var canvas = document.getElementById('canvas');
 		var context = canvas.getContext('2d');
@@ -161,10 +171,7 @@
 					var newCoorX = target.realX;
 					var newCoorY = target.realY;
 
-					var grid = 10;
-
-					/************************test*/
-  
+					var grid = gridSize;
 
 					var coor1x = 10;  //10
 					var coor1y = 10;  //10
@@ -221,7 +228,25 @@
 						console.log(newCoorxGrid + "  " + newCooryGrid);
 
 						console.log("###################");
-						console.log(Math.ceil(x) + "   " + Math.ceil(y));
+						var calculatedX = Math.ceil(x);
+						var calculatedY = Math.ceil(y);
+						console.log(calculatedX + "   " + calculatedY);
+
+						sendFireRequest(calculatedX, calculatedY);
+					}
+
+					function sendFireRequest(calculatedX, calculatedY) {
+						fetch('http://192.168.47.192:3000/api/game/fire', {
+							method: 'POST',
+							redirect: 'follow',
+							body: JSON.stringify({
+								x: calculatedX,
+								y: calculatedY
+							}),
+							headers: new Headers({ 'Content-Type': 'application/json' })
+						}).then(function(data) {
+							console.log(data);
+						});
 					}
 
 					function getOrientation(corner) {
