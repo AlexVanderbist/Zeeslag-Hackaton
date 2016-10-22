@@ -156,83 +156,53 @@
 					console.log(corners);
 					console.log(target);
 
-					var linksBovenX = corners.LT.realX;
-					var linksBovenY = corners.LT.realY;
+					var topLeftX = corners.LT.realX;
+					var topLeftY = corners.LT.realY;
 
-					var rechtOnderX = corners.RB.realX;
-					var rechtOnderY = corners.RB.realY;
+					var topRightX = corners.RT.realX; 
+					var topRightY = corners.RT.realY;
+					
+					var bottomLeftX = corners.LB.realX;
+					var bottomLeftY = corners.LB.realY;
 
-					var linksOnderX = corners.LB.realX;
-					var linksOnderY = corners.LB.realY;
-
-					var rechtBovenX = corners.RT.realX; 
-					var rechtBovenY = corners.RT.realY;
+					var bottomRightX = corners.RB.realX;
+					var bottomRightY = corners.RB.realY;
 
 					var newCoorX = target.realX;
 					var newCoorY = target.realY;
 
-<<<<<<< HEAD
-					var grid = 10;
 
-					/*************************/
-  
-=======
 					var grid = gridSize;
->>>>>>> origin/master
 
-					var coor1x = 10;  //10
-					var coor1y = 10;  //10
 
-					var coor2x = 20;  //20
-					var coor2y = 10;  //10
-
-					var coor3x = 10;  //20
-					var coor3y = 20;  //10
-
-					var coor4x = 20;  //20
-					var coor4y = 20;  //20
-
-					 if(   (newCoorX >= rechtOnderX) || 
-					        (newCoorX <= linksBovenX) || 
-					        (newCoorY >= rechtOnderY) || 
-					        (newCoorY <= linksBovenY)
+					if(   (newCoorX >= bottomRightX) || 
+					        (newCoorX <= topLeftX) || 
+					        (newCoorY >= bottomRightY) || 
+					        (newCoorY <= topLeftY)
 					    )
 					  {
 					    console.log('probleme');
 					  }
 					  else
 					  {
-					     setGrid();
 					     coorGrid();
 					  }
 
 
-					function setGrid() {
-						coor1x = linksBovenX;  //10
-						coor1y = linksBovenY;  //10
-
-						coor2x = rechtBovenX;  //20
-						coor2y = rechtBovenY;  //10
-
-						coor3x = linksOnderX;  //20
-						coor3y = linksOnderY;  //10
-
-						coor4x = rechtOnderX;  //20
-						coor4y = rechtOnderY;  //20
-					}
+					
 					
 					function coorGrid() {
 
-						var width = (coor2x - coor1x) / grid;  //2
-						var height = (coor3y - coor1y) / grid; //2
+						var width = (topRightX - topLeftX) / grid;  //2
+						var height = (bottomLeftY - topLeftY) / grid; //2
 
-						var newCoorxGrid = newCoorX - coor1x;  // 15 - 10 -> 5
-						var newCooryGrid = newCoorY - coor1y;  // 12 - 10 -> 2
+						var newCoorxGrid = newCoorX - topLeftX;  // 15 - 10 -> 5
+						var newCooryGrid = newCoorY - topLeftY;  // 12 - 10 -> 2
 
 						var x = newCoorxGrid / width;
 						var y = newCooryGrid / height;
 
-						console.log(newCoorxGrid + "  " + newCooryGrid);
+						console.log(grid + "  " + newCooryGrid);
 
 						console.log("###################");
 						var calculatedX = Math.ceil(x);
