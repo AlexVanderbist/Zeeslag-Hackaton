@@ -28,6 +28,24 @@
 
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-5 ">
+                <!--<div ng-repeat="player in gride.players" class="col-md-3 players">-->
+                <!--<div href="#" class="col-md-3 ">-->
+                <!--<img class="player_pictuur" ng-src="{{player.photo}}">-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <div class="col-md-12 comand" id="box">
+                    <div href="#" class="col-md-9 col-md-offset-1">
+                        <div ng-repeat="action in actions" class="content">
+                            <pre>{{action}}</pre>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
             <div class="col-md-6">
 
                 <table>
@@ -56,24 +74,7 @@
                     </tr>
                 </table>
             </div>
-            <div class="col-md-5 ">
-                <!--<div ng-repeat="player in gride.players" class="col-md-3 players">-->
-                    <!--<div href="#" class="col-md-3 ">-->
-                        <!--<img class="player_pictuur" ng-src="{{player.photo}}">-->
-                    <!--</div>-->
-                <!--</div>-->
 
-                <div class="col-md-12 comand" id="box">
-                         <div href="#" class="col-md-9 col-md-offset-1">
-                        <div ng-repeat="action in actions" class="content">
-                            <pre>{{action}}</pre>
-                        </div>
-
-
-                    </div>
-                </div>
-
-            </div>
         </div>
     </div>
 </div>

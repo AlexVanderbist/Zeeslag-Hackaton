@@ -17,14 +17,14 @@
        
             <div class="game_busy">
                 <h1>Zeeslag: Let's battle</h1>
-
+                <h2>Player: {{playerID}}</h2>
                 <table class="grid">
                     <tr ng-repeat="y in gridArray">
                         <td ng-repeat="x in gridArray"  class="{{x}}{{y}}">{{x}}{{y}}</td>
                     </tr>
                 </table>
 
-                <button ng-click="restart()"> Restart</button>
+                <button class="reset_btn" ng-click="restart()"> Restart</button>
             </div>
         
         
