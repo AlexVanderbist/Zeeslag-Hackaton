@@ -252,6 +252,7 @@
 
 
                 }).success(function (data) {
+                    statusInterval();
                     $scope.waitTilStart = true;
                     $scope.playerId = data['playerId'];
 
@@ -297,12 +298,21 @@
 
             });
         }
+        $scope.restart = function(){
+            $http.post(server + '/reset', {
 
+
+            }).success(function () {
+
+                window.location = "./index.html";
+
+            });
+        };
 
         function statusInterval() {
 
             setInterval(function () {
-
+                $scope.initWebsite();
             }, 3000);
         }
 
