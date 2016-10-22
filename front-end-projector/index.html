@@ -5,11 +5,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="base.css">
+    <script   src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"
           rel="stylesheet">
     <script src="base_angular_projector.js"></script>
-    <script   src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="   crossorigin="anonymous"></script>
+
 </head>
 
 <body ng-app="myapp">
@@ -26,71 +27,23 @@
         <div class="row">
             <div class="col-md-6">
                 <table>
-                    <tr ng-repeat="p in range(1,gride.height)">
-                        <td ng-repeat="n in range(1,gride.length)">
-                            <div ng-if="n == 2 && p == 2">
-                                <img ng-src="{{users.user_photo}}">
-                                <img class="reflect" ng-src="{{users.user_photo}}">
-                                <div id="wrap">
-                                    <div class="box" ng-repeat="n in range(1,100)"></div>
-                                </div>
-                            </div>
-                            <div ng-if="!(n == 2 && p == 2)">
-                                {{n  }}{{p }}
-                            </div>
+                    <tr ng-repeat="y in range(1,gride.height)">
+                        <td ng-repeat="x in range(1,gride.length)"  class="{{y}}{{x}}">
+                            <div >
 
+                                <!--<img ng-src="{{users.user_photo}}">-->
+                                <!--<img class="reflect" ng-src="{{users.user_photo}}">-->
+                                <!--<div id="wrap">-->
+                                    <!--<div class="box" ng-repeat="n in range(1,100)"></div>-->
+                                <!--</div>-->
+                            </div>
                         </span>
                         </td>
                     </tr>
                 </table>
             </div>
             <div class="col-md-5">
-                <div class="col-md-12 players">
-                    <div href="#" class="col-md-3 ">
-                        <img class="player_pictuur" ng-src="{{users.user_photo}}">
-                    </div>
-                    <div class="col-md-7  playr_content">
-                        <p>Naam:</p>
-                        <p>Achternaam:</p>
-                    </div>
-                </div>
-                <div class="col-md-12 players">
-                    <div href="#" class="col-md-3 ">
-                        <img class="player_pictuur" ng-src="{{users.user_photo}}">
-                    </div>
-                    <div class="col-md-7  playr_content">
-                        <p>Naam:</p>
-                        <p>Achternaam:</p>
-                    </div>
-                </div>
-                <div class="col-md-12 players">
-                    <div href="#" class="col-md-3 ">
-                        <img class="player_pictuur" ng-src="{{users.user_photo}}">
-                    </div>
-                    <div class="col-md-7  playr_content">
-                        <p>Naam:</p>
-                        <p>Achternaam:</p>
-                    </div>
-                </div>
-                <div class="col-md-12 players">
-                    <div href="#" class="col-md-3 ">
-                        <img class="player_pictuur" ng-src="{{users.user_photo}}">
-                    </div>
-                    <div class="col-md-7  playr_content">
-                        <p>Naam:</p>
-                        <p>Achternaam:</p>
-                    </div>
-                </div>
-                <div class="col-md-12 players">
-                    <div href="#" class="col-md-3 ">
-                        <img class="player_pictuur" ng-src="{{users.user_photo}}">
-                    </div>
-                    <div class="col-md-7  playr_content">
-                        <p>Naam:</p>
-                        <p>Achternaam:</p>
-                    </div>
-                </div>
-                <div class="col-md-12 players">
+                <div class="col-md-12 players" >
                     <div href="#" class="col-md-3 ">
                         <img class="player_pictuur" ng-src="{{users.user_photo}}">
                     </div>
@@ -105,6 +58,15 @@
         </div>
     </div>
 </div>
+<script>
+//    $( document ).ready( function () {
+//        setInterval(function(){
+//            console.log("ready");
+//        }, 500);
+//
+//
+//    })
+</script>
 
 
 </body>
