@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6698244d-9e2b-4e43-bb84-45de5d889ef2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end_gsm/gridGame.html" afterPath="$PROJECT_DIR$/front-end_gsm/gridGame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end_gsm/index.html" afterPath="$PROJECT_DIR$/front-end_gsm/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end_gsm/js/main.js" afterPath="$PROJECT_DIR$/front-end_gsm/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="6698244d-9e2b-4e43-bb84-45de5d889ef2" name="Default" comment="" />
     <ignored path="Zeeslag-Hackaton.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
