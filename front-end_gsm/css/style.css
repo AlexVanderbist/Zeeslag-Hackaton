@@ -14,6 +14,7 @@ body {
 
 .mainIndex{
     width: 100%;
+    font-size: 1.2em;
 }
 
 .indexContent{
@@ -22,13 +23,15 @@ body {
     margin-top: 5%;
 }
 
-.game_none {
+.game_none,
+.game_created,
+.game_started {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5%;
 }
 
 
-.game_none form{
+.game_none form {
     text-align: center;
     width: 100%;
 }
@@ -38,9 +41,17 @@ h1 {
 }
 
 
-.game_none form label,
+.game_none form label {
+    width: 90%;
+    margin: 0 auto;
+    display: block;
+}
+
+
 .game_none form input {
     width: 70%;
+    margin: 0 auto;
+    display: block;
 }
 
 
@@ -57,11 +68,20 @@ h1 {
     cursor: pointer;
     color: #fff;
     margin-top: 10px;
+    font-size: inherit;
 }
 
 .game_none form input[type="submit"]:hover {
     background-color: #308279;
 }
+
+
+
+
+.game_created form label{
+    display: block;
+}
+
 
 
 .grid {
@@ -86,6 +106,25 @@ h1 {
         background-size: 200% auto;
         background-position: center top;
     }
+    
+    .indexContent{
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+    
+    .grid {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .grid tr td {
+        background-color: #5d8;
+        padding: 5px;
+        border: 1px #d9d9d9 solid;
+    }
+    
+    
 }
 
 
