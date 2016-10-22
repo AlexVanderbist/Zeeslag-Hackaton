@@ -218,8 +218,8 @@
 
                 completeList = [{boats: allBoats }];
                 $http.post(server + '/game/player', fd,{
-                    withCredentials: true,
-                    headers: {'Content-Type': undefined },
+                    //withCredentials: true,
+                    //headers: {'Content-Type': undefined },
                     transformRequest: angular.identity,
                     boats: allBoats
 
