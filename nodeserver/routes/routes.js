@@ -233,7 +233,7 @@ var appRouter = function(app) {
         app.game.players.forEach(function(player, playerIndex){
             var status = 1;
             // loop over boats
-            if(app.game.players[playerIndex].boats.length) {
+            if(app.game.players[playerIndex].boats) {
                 app.game.players[playerIndex].boats.forEach(function(boat, boatIndex){
                     var boatCoords = getCoordsForBoats([boat]);
 
