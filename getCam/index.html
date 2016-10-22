@@ -40,7 +40,7 @@
 	var gridSize;
 	window.onload = function () {
 		console.log("==========send GET==========");
-		fetch('http://192.168.47.192:3000/api/game', {
+		fetch('http://192.168.47.204:3000/api/game', {
 			method: 'GET'
 		}).then(function(response) {
 			return response.json()
@@ -213,7 +213,7 @@
 					}
 
 					function sendFireRequest(calculatedX, calculatedY) {
-						fetch('http://192.168.47.192:3000/api/game/fire', {
+						fetch('http://192.168.47.204:3000/api/game/fire', {
 							method: 'POST',
 							redirect: 'follow',
 							body: JSON.stringify({
