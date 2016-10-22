@@ -9,9 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "array.prototype.findindex": "^2.0.0",
     "body-parser": "^1.15.2",
     "busboy-body-parser": "^0.2.0",
     "connect-busboy": "0.0.2",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "multer": "^1.2.0"
   }
 }

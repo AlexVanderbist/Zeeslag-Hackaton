@@ -1,7 +1,9 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-//var busboy = require('connect-busboy');
+var path = require("path");
 var app = express();
+require('array.prototype.findindex');
+
 
 var conditionalCSRF = function (req, res, next) {
     next();
@@ -16,6 +18,8 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(express.static(__dirname + '/upload'));
+
 //const busboyBodyParser = require('busboy-body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,10 +31,8 @@ for(var y=0; y<gridSize;y++) {
         var square = { 
             x: x+1,
             y: y+1,
-          status: Math.floor(Math.random() * 3), 
-          players: [
-              {playerId:1, photo: 'nope.jpg'}
-          ] 
+            status: 0, 
+            players: [ ] 
         };
         app.emptyGrid.push(square);
     }
@@ -48,6 +50,8 @@ app.game = {
 }
 
 app.actions = [];
+
+
  
 var routes = require("./routes/routes.js")(app);
  

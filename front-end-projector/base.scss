@@ -3,14 +3,13 @@ $heigth: 800px;
 $explod: 100;
 
 body {
-  background-image: url("background.jpg");
+
   table {
     border: 1px solid #fff;
     text-align: center;
-    color: #fff;
-    background-color: black;
     position: absolute;
-    img {
+    .img {
+      filter: grayscale(100%);
       height: $heigth/$grite;
       width: $heigth/$grite;
       border-radius: 50%;
@@ -24,7 +23,7 @@ body {
     }
   }
   td {
-    border: 1px solid #fff;
+    border: 1px solid #000;
     width: $heigth / $grite;
     position: relative;
   }
@@ -35,36 +34,81 @@ body {
     position: relative;
     border-radius: 50px;
   }
+  tr {
+    position: relative;
+    height: $heigth / $grite;
+    border: 1px solid #fff;
+    position: relative;
+    border-radius: 50px;
+  }
+  .grey{
+    height: $heigth / $grite;
+    width: $heigth / $grite;;
+    background-color: ghostwhite;
+  }
 }
 .players{
-  color: #fff;
-  background-color: #000;
-  border-radius: 150px 0px 0px 150px;
-  margin-top: 5px;
-  font-size: 1.2em;
+
 
   .player_pictuur{
     max-width: 125px;
     max-height: 125px;
     border-radius: 50%;
     border: 5px solid black;
-margin-left: -25px;
+
   }
   .playr_content{
     margin-top: 50px;
   }
 
 }
+.rood{
+  border-radius: 50px;
+  height: 75px;
+  width: 75px;
+  background-color: red;
+}
+
+.geel{
+  border-radius: 50px;
+  height: 75px;
+  width: 75px;
+  background-color: yellow;
+}
 
 .status_0{
-  background-color: #000;
+
 }
 .status_1{
   background-color: #ffffff;
   color: #ff00aa;
 }
 .status_2{
-  background-color: #ff00aa;
+  background-color: #fff;
+}
+
+
+.comand{
+
+  background-color: #115228;
+  margin-left: 50px;
+  min-height: 500px;
+  height: 400px;
+
+
+  padding: 100px 100px 100px 10px;
+  overflow: scroll;
+  .content{
+    max-height: 300px;
+    overflow: hidden;
+    //background-color: rgba(0,0,0,1);
+
+  }
+  pre{
+    background-color: rgba(0,0,0,0);
+    color: #fff;
+
+  }
 }
 
 $boxes: 100;

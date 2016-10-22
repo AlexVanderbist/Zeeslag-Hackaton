@@ -22,52 +22,92 @@ angular.module("myapp", [])
             return input;
         };
 
-        var chek =1;
+
+        setTimeout(function(){
+            setInterval(function () {
+
+                var http=  $http({
+                    method: "GET",
+                    dataType: 'json',
+                    url: "http://192.168.47.192:3000/api/game/grid"
+                }).then(function mySucces(response) {
+
+                    for(var i =0; i < response.data.length; i++){
+                        if(!($("."+response.data[i].x + +response.data[i].y).hasClass("status_"+response.data[i].status)) ){
+                            $("."+response.data[i].x + +response.data[i].y).addClass("status_"+ response.data[i].status );
+                            if(response.data[i].status == 2 || response.data[i].status == 1){
+                                for(var j =0; j < response.data[i].players.length; j++){
+                                    $("."+response.data[i].x + +response.data[i].y).append("<img class='img' src='http://192.168.47.192:3000/"+response.data[i].players[j].photo +"'>");
+                                }
+                            }
+                        }
+                    }
+                    console.log(response.data)
+                    //$scope.data_gride = response.data;
+                }, function myError(response) {
+                    $scope.data_gride = 0;
+                });
+
+
+                var http=  $http({
+                    method: "GET",
+                    dataType: 'json',
+                    url: "http://192.168.47.192:3000/api/game/actions"
+                }).then(function mySucces(actions) {
+                    $scope.actions = actions.data;
+                    console.log("actions",actions);
+
+
+                    var objDiv = document.getElementById("box");
+                    objDiv.scrollTop = objDiv.scrollHeight;
+
+                }, function myError(response) {
+                    $scope.data_gride = 0;
+                });
+
+            }, 1000);
+        }, 10000);
+
+
+        setInterval(function () {
+
+            var http=  $http({
+                method: "GET",
+                dataType: 'json',
+                url: "http://192.168.47.192:3000/api/game/actions"
+            }).then(function mySucces(actions) {
+                $scope.actions = actions.data;
+                console.log("actions",actions);
+            }, function myError(response) {
+                $scope.data_gride = 0;
+            });
+
+        }, 1000);
+
+        $scope.actions;
         setInterval(function () {
 
             $http({
                 method: "GET",
                 dataType: 'json',
-                url: "http://192.168.47.192:3000/api/game/grid"
+                url: "http://192.168.47.192:3000/api/game"
             }).then(function mySucces(response) {
+                console.log(response.data);
+                if(response.data.status){
+                    gride.length =response.data.gridSize;
+                    gride.height =response.data.gridSize;
+                    gride.players = response.data.players;
+                    $scope.action = "Wait for players";
 
-                for(var i =0; i < response.data.length; i++){
-                        if(!($("."+response.data[i].x + +response.data[i].y).hasClass("status_"+response.data[i].status)) ){
-                            $("."+response.data[i].x + +response.data[i].y).addClass("status_"+ response.data[i].status );
-                            if(response.data[i].status == 2 || response.data[i].status == 1){
-                                for(var j =0; j < response.data[i].players.length; j++){
-                                    $("."+response.data[i].x + +response.data[i].y).append("<img src='"+response.data[i].players[j].photo +"'>")
-                                }
-                            }
-                        }
+
+
 
                 }
-                console.log(response.data)
-                //$scope.data_gride = response.data;
-
-
             }, function myError(response) {
                 $scope.data_gride = 0;
             });
+        }, 5000);
 
-
-        }, 1000);
-
-        $http({
-            method: "GET",
-            dataType: 'json',
-            url: "http://192.168.47.192:3000/api/game"
-        }).then(function mySucces(response) {
-            console.log(response.data);
-            if(response.data.status){
-                gride.length =response.data.gridSize;
-                gride.height =response.data.gridSize;
-                gride.players = response.data.players;
-            }
-
-        }, function myError(response) {
-            $scope.data_gride = 0;
-        });
 
         var concatanait;
 
