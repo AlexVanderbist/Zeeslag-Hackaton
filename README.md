@@ -70,6 +70,8 @@
 
 ### Fire
 
-- POST /game/fire `{}`
+- POST /game/fire `{ x: (int), y: (int) }`
   
-  returned: HTTP 200 {}
+  returned: HTTP 200 als fire succesvol was
+  
+  returned: HTTP 400 als coordinaten niet kloppen
