@@ -15,6 +15,12 @@
     currentPlayer: (int)
   }
   ```
+  
+- GET /game/player
+
+  returned HTTP 200 if player exists on IP `{ playerId: (int) etc... }`
+  
+  returned HTTP 200 if no player exists on IP `{}` (empty object)
 
 ### GSM front-end
 
@@ -59,3 +65,11 @@
     }
   ]
   ```
+  
+#### Fire button
+
+### Fire
+
+- POST /game/fire `{}`
+  
+  returned: HTTP 200 {}
