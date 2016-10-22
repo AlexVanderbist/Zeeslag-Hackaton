@@ -11,6 +11,12 @@
         $scope.direction = "east";
         $scope.waitTilStart = false;
         var server = "http://192.168.47.192:3000/api";
+
+
+        function testcam(){
+
+        }
+
        // $scope.gameStatus = 0;
 
         $scope.initWebsite = function(){
@@ -20,9 +26,15 @@
             }).then(function successCallback(response) {
 
                 $scope.gameStatus = response.data.status;
+
+
                // $scope.gridSize = response.data["gridSize"];
+
                 if(response['status'] == 2){
+
                     window.location = "./gridGame.html"
+                }else{
+                    refreshStatus();
                 }
                 $scope.gridSize = response.data["gridSize"];
                 var array = [];
@@ -221,20 +233,29 @@
 
         };
         function refreshStatus(){
+
             $http({
                 method: 'GET',
-                url: server + '/game'
+                url: server + '/game/player'
             }).then(function successCallback(response) {
+                var status = $scope.gameStatus;
+                if(status != 2 && response.data.playerId){
 
+                $scope.waitTilStart = true;
+                }else{
+
+                }
+                console.log(response);
             }, function errorCallback(response) {
 
             });
         }
 
+
        function statusInterval(){
 
            setInterval(function(){
-           refreshStatus()
+
            }, 3000);
        }
 

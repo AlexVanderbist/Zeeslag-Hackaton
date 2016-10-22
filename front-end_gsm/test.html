@@ -3,89 +3,113 @@
 <head>
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
-
     <script type="text/javascript" src="js/main.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <meta charset="UTF-8">
 
-    <title></title>
+    <title>Zeeslag premium</title>
 </head>
 <body ng-app="mainApp">
+<div class="mainIndex">
 
-<div ng-controller="MainController">
+    <div class="indexContent"  ng-controller="MainController">
 
 
-    <div class="game_none" ng-if="gameStatus == 0">
+        <div class="game_none" ng-if="gameStatus == 0" ng-hide="waitTilStart">
 
-        <form ng-submit="startNewGame(maxPlayers)">
-            <div>
-                <label for="max_players">Aantal spelers:</label>
-                <input type="number" name="max_players" id="max_players" ng-model="maxPlayers">
-            </div>
-            <div>
-                <input type="submit" value="Game aanmaken">
-            </div>
-        </form>
+            <h1>Zeeslag premium!</h1>
 
-    </div>
+            <form ng-submit="startNewGame(maxPlayers)">
+                <div>
+                    <label for="max_players">Aantal spelers:</label>
+                    <input type="number" name="max_players" id="max_players" ng-model="maxPlayers" min="2" max="6">
+                </div>
+                <div>
+                    <input type="submit" value="Game aanmaken">
+                </div>
+            </form>
 
-    <div class="game_created" ng-if="gameStatus == 1">
-
-        <form>
-            <div>
-                <label for="photo">Foto:</label>
-                <input type="file" name="photo" id="photo">
-            </div>
-
-            <div>
-                <input type="submit" value="Let's go">
-            </div>
-
-        </form>
-
-        <div>
-            <div>
-                <input ng-model="direction" type="radio" value="east" id="east" name="direction" ng-checked="true">
-                <label for="east">Horizontaal</label>
-            </div>
-            <div>
-                <input ng-model="direction" type="radio" value="south" id="south" name="direction">
-                <label for="south">Verticaal</label>
-            </div>
-            <div>
-                <input ng-model="length" type="radio" value="2" id="2" name="2">
-                <label for="2">2</label>
-            </div>
-            <div>
-                <input ng-model="length" type="radio" value="3" id="3" name="3">
-                <label for="3">3</label>
-            </div>
-            <div>
-                <input ng-model="length" type="radio" value="5" id="5" name="5">
-                <label for="5">5</label>
-            </div>
         </div>
 
-        <h1>You entered: {{direction}} en  {{length}}</h1>
+        <div class="game_created" ng-if="gameStatus == 1" ng-hide="waitTilStart">
 
-        <table class="grid">
-            <tr ng-repeat="y in [1, 2, 3, 4]">
-                <td ng-repeat="x in [1, 2, 3, 4]" ng-click="set_boat(x, y, direction, length)" class="{{x}}{{y}}">{{x}}{{y}}</td>
-            </tr>
-        </table>
+            <form>
+                <div>
+                    <label for="photo">Foto:</label>
+                    <input ng-model="photo" type="file" name="photo" id="photo">
 
+                    <input type="file" accept="image/*" capture="camera">
+
+                </div>
+
+            </form>
+
+            <div class="set_boats">
+
+                <h2>Zet je boten:</h2>
+
+                <div class="direction">
+                    <h4>Richting:</h4>
+                    <div>
+                        <input ng-model="direction" type="radio" value="east" id="east" name="direction" ng-checked="true">
+                        <label for="east">Horizontaal</label>
+                    </div>
+                    <div>
+                        <input ng-model="direction" type="radio" value="south" id="south" name="direction">
+                        <label for="south">Verticaal</label>
+                    </div>
+                </div>
+
+                <div class="length">
+                    <h4>Lengte:</h4>
+                    <div>
+                        <input ng-model="length" type="radio" value="2" id="2" name="2" ng-hide="boat2IsSet">
+                        <label for="2">2</label>
+                    </div>
+                    <div>
+                        <input ng-model="length" type="radio" value="3" id="3" name="3">
+                        <label for="3">3</label>
+                    </div>
+                    <div>
+                        <input ng-model="length" type="radio" value="5" id="5" name="5">
+                        <label for="5">5</label>
+                    </div>
+                </div>
+
+            </div>
+
+            <h1>You entered: {{direction}} en  {{length}}</h1>
+
+            <table class="grid">
+                <tr ng-repeat="y in gridArray">
+                    <td ng-repeat="x in gridArray" ng-click="set_boat(x, y, direction, length)" class="{{x}}{{y}}">{{x}}{{y}}</td>
+                </tr>
+            </table>
+
+            <div>
+                <button ng-click="post_boats()">Zet boten</button>
+                <button ng-click="reset_boats()">Reset</button>
+            </div>
+
+
+
+
+        </div>
+        <div ng-show="waitTilStart">
+            <h1> wacht tot tot iedereen zijn boten heeft gezet</h1>
+        </div>
+        <div class="game_started" ng-if="gameStatus == 2">
+
+            <div>
+                Het spel is al gestart en jij bent niet 1 van de geselecteerde spelers... Sorry!
+            </div>
+
+        </div>
 
 
     </div>
-
-    <div class="game_started" ng-if="gameStatus == 2">
-
-    </div>
-
 
 </div>
-
-
 </body>
 </html>
