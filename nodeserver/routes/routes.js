@@ -25,6 +25,40 @@ var appRouter = function(app) {
         return true;
     }
 
+
+    var multer = require("multer");
+    var path = require("path");
+    var crypto = require("crypto");
+    var storage = multer.diskStorage({
+    destination: './upload/',
+    filename: function (req, file, cb) {
+        crypto.pseudoRandomBytes(16, function (err, raw) {
+        if (err) return cb(err)
+
+        cb(null, raw.toString('hex') + path.extname(file.originalname))
+        })
+    }
+    })
+
+    var upload = multer({ storage: storage })
+
+    app.post('/api/game/player/photo', upload.single('photo'), function(req, res) {
+        if (! req.file) return res.status(400).json({error:'no_file', message: 'No file found in photo'});
+
+        // req.file
+        console.log(req.file);
+
+        var ip = req.headers['x-forwarded-for'] || 
+            req.connection.remoteAddress || 
+            req.socket.remoteAddress ||
+            req.connection.socket.remoteAddress;
+
+        var player = findUserWithIp(ip);
+        var index = app.game.players.findIndex(player => player.playerId==player.playerId);
+        app.game.players[index].photo = req.file.filename;
+
+    });
+
     // returns an available player id
     var getFreePlayerId = function () {
         for(var i=0; i<app.game.maxPlayers; i++) {
@@ -50,6 +84,7 @@ var appRouter = function(app) {
 
         return playerWithIp;
     }
+
 
     // starts game
     var startGame = function () {
@@ -171,7 +206,6 @@ var appRouter = function(app) {
 
         if( ! validCoordinates(coords)) return res.status(400).json({error:'invalid_coords', message:'Coordinates are invalid'});
 
-        var status = 1;
         var hitUsers = [];
     
         // get grid square index
@@ -180,7 +214,7 @@ var appRouter = function(app) {
 
         // go over all users 
         app.game.players.forEach(function(player, playerIndex){
-
+            var status = 1;
             // loop over boats
             app.game.players[playerIndex].boats.forEach(function(boat, boatIndex){
                 var boatCoords = getCoordsForBoats([boat]);
@@ -205,16 +239,19 @@ var appRouter = function(app) {
             }, this);
 
             if(status == 2) {
-                hitUsers.push(player);
+                var playerWithoutBoats = player;
+                playerWithoutBoats.boats = null;
+                hitUsers.push(playerWithoutBoats);
                 addAction('ship_hit', player.playerId, app.game.currentPlayer);
             }
 
             
         },this);
 
-
-        app.grid[index].status = status; // hit
-        app.grid[index].players = hitUsers;
+        if(hitUsers.length){
+            app.grid[index].status = status; // hit
+            app.grid[index].players = hitUsers;
+        }
 
 
         nextPlayer();
