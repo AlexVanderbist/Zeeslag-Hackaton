@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6698244d-9e2b-4e43-bb84-45de5d889ef2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end_gsm/gridGame.html" afterPath="$PROJECT_DIR$/front-end_gsm/gridGame.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end_gsm/js/main.js" afterPath="$PROJECT_DIR$/front-end_gsm/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="6698244d-9e2b-4e43-bb84-45de5d889ef2" name="Default" comment="" />
     <ignored path="Zeeslag-Hackaton.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -61,8 +57,8 @@
       <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/front-end_gsm/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46378505">
-              <caret line="278" column="28" selection-start-line="278" selection-start-column="28" selection-end-line="278" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.33761683">
+              <caret line="323" column="52" selection-start-line="323" selection-start-column="52" selection-end-line="323" selection-end-column="52" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -368,8 +364,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/front-end_gsm/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46378505">
-          <caret line="278" column="28" selection-start-line="278" selection-start-column="28" selection-end-line="278" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.33761683">
+          <caret line="323" column="52" selection-start-line="323" selection-start-column="52" selection-end-line="323" selection-end-column="52" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
