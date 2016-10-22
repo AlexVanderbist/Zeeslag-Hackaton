@@ -2,6 +2,8 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var path = require("path");
 var app = express();
+require('array.prototype.findindex');
+
 
 var conditionalCSRF = function (req, res, next) {
     next();
