@@ -12,6 +12,10 @@ body {
     font-size: 100%;
 }
 
+h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+
 .mainIndex{
     width: 100%;
     font-size: 1.2em;
@@ -78,11 +82,19 @@ h1 {
 
 
 
+.game_created form {
+    margin-bottom: 20px;
+}
+
 .game_created form label{
     display: block;
 }
 
-
+.game_created .direction,
+.game_created .length {
+    width: 50%;
+    float: left;
+}
 
 .grid {
     border-collapse: collapse;
@@ -100,6 +112,19 @@ h1 {
 
 
 
+/* CLEARFIX */
+.game_created .set_boats::before, .game_created .set_boats::after {
+    content: "";
+    line-height: 0;
+    display: table;
+}
+
+.game_created .setboats::after {
+    clear: both;
+}
+
+
+
 @media screen and (max-width: 600px) {
     
     body {
@@ -110,7 +135,6 @@ h1 {
     .indexContent{
         width: 100%;
         margin: 0 auto;
-        margin-top: 5%;
     }
     
     .grid {
