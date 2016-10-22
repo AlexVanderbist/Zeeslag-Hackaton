@@ -29,7 +29,7 @@ angular.module("myapp", [])
                 var http=  $http({
                     method: "GET",
                     dataType: 'json',
-                    url: "http://192.168.47.192:3000/api/game/grid"
+                    url: "http://192.168.47.204:3000/api/game/grid"
                 }).then(function mySucces(response) {
 
                     for(var i =0; i < response.data.length; i++){
@@ -37,7 +37,7 @@ angular.module("myapp", [])
                             $("."+response.data[i].x + +response.data[i].y).addClass("status_"+ response.data[i].status );
                             if(response.data[i].status == 2 || response.data[i].status == 1){
                                 for(var j =0; j < response.data[i].players.length; j++){
-                                    $("."+response.data[i].x + +response.data[i].y).append("<img class='img' src='http://192.168.47.192:3000/"+response.data[i].players[j].photo +"'>");
+                                    $("."+response.data[i].x + +response.data[i].y).append("<img class='img' src='http://192.168.47.204:3000/"+response.data[i].players[j].photo +"'>");
                                 }
                             }
                         }
@@ -52,7 +52,7 @@ angular.module("myapp", [])
                 var http=  $http({
                     method: "GET",
                     dataType: 'json',
-                    url: "http://192.168.47.192:3000/api/game/actions"
+                    url: "http://192.168.47.204:3000/api/game/actions"
                 }).then(function mySucces(actions) {
                     $scope.actions = actions.data;
                     console.log("actions",actions);
@@ -74,7 +74,7 @@ angular.module("myapp", [])
             var http=  $http({
                 method: "GET",
                 dataType: 'json',
-                url: "http://192.168.47.192:3000/api/game/actions"
+                url: "http://192.168.47.204:3000/api/game/actions"
             }).then(function mySucces(actions) {
                 $scope.actions = actions.data;
                 console.log("actions",actions);
@@ -90,7 +90,7 @@ angular.module("myapp", [])
             $http({
                 method: "GET",
                 dataType: 'json',
-                url: "http://192.168.47.192:3000/api/game"
+                url: "http://192.168.47.204:3000/api/game"
             }).then(function mySucces(response) {
                 console.log(response.data);
                 if(response.data.status){
