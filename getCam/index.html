@@ -152,12 +152,19 @@
 					var rechtOnderX = corners.RB.realX;
 					var rechtOnderY = corners.RB.realY;
 
+					var linksOnderX = corners.LB.realX;
+					var linksOnderY = corners.LB.realY;
+
+					var rechtBovenX = corners.RT.realX; 
+					var rechtBovenY = corners.RT.realY;
+
 					var newCoorX = target.realX;
 					var newCoorY = target.realY;
 
 					var grid = 10;
 
-					/*************************/
+					/************************test*/
+  
 
 					var coor1x = 10;  //10
 					var coor1y = 10;  //10
@@ -171,22 +178,35 @@
 					var coor4x = 20;  //20
 					var coor4y = 20;  //20
 
+					 if(   (newCoorX >= rechtOnderX) || 
+					        (newCoorX <= linksBovenX) || 
+					        (newCoorY >= rechtOnderY) || 
+					        (newCoorY <= linksBovenY)
+					    )
+					  {
+					    console.log('probleme');
+					  }
+					  else
+					  {
+					     setGrid();
+					     coorGrid();
+					  }
+
 
 					function setGrid() {
 						coor1x = linksBovenX;  //10
 						coor1y = linksBovenY;  //10
 
-						coor2x = rechtOnderX;  //20
-						coor2y = linksBovenY;  //10
+						coor2x = rechtBovenX;  //20
+						coor2y = rechtBovenY;  //10
 
-						coor3x = linksBovenX;  //20
-						coor3y = rechtOnderY;  //10
+						coor3x = linksOnderX;  //20
+						coor3y = linksOnderY;  //10
 
 						coor4x = rechtOnderX;  //20
 						coor4y = rechtOnderY;  //20
 					}
-					setGrid();
-					coorGrid();
+					
 					function coorGrid() {
 
 						var width = (coor2x - coor1x) / grid;  //2
@@ -198,6 +218,8 @@
 						var x = newCoorxGrid / width;
 						var y = newCooryGrid / height;
 
+						console.log(newCoorxGrid + "  " + newCooryGrid);
+
 						console.log("###################");
 						console.log(Math.ceil(x) + "   " + Math.ceil(y));
 					}
@@ -206,10 +228,10 @@
 						var orientation = "invalid";
 						// check orientation
 
-						if (between(corners.LT.x, corner.x - 15, corner.x + 15)) {
+						if (between(corners.LT.x, corner.x - 100, corner.x + 100)) {
 							orientation = "LB";
 						}
-						else if (between(corners.LT.y, corner.y - 15, corner.y + 15)) {
+						else if (between(corners.LT.y, corner.y - 100, corner.y + 100)) {
 							orientation = "RT";
 						}
 						else {

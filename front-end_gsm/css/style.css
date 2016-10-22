@@ -24,12 +24,13 @@ h1, h2, h3, h4, h5 {
 .indexContent{
     width: 60%;
     margin: 0 auto;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 .game_none,
 .game_created,
-.game_started {
+.game_started,
+.game_busy {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 5%;
 }
@@ -98,6 +99,7 @@ h1 {
 
 .grid {
     border-collapse: collapse;
+    color: #fff;
 }
 
 .grid tr td {
@@ -110,6 +112,20 @@ h1 {
     background-color: #c55;
 }
 
+.game_created .buttons button {
+    width: 100%;
+    border: none;
+    background-color: #7CBFB8;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 10px;
+    font-size: inherit;
+    padding: 5px 0;
+}
+
+.game_created .buttons button:hover {
+    background-color: #308279;
+}
 
 
 /* CLEARFIX */
@@ -125,7 +141,7 @@ h1 {
 
 
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
     
     body {
         background-size: 200% auto;
