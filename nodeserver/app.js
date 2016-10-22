@@ -1,5 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+//var busboy = require('connect-busboy');
 var app = express();
 
 var conditionalCSRF = function (req, res, next) {
@@ -11,9 +12,11 @@ app.use(conditionalCSRF);
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Credentials", "false");
   next();
 });
- 
+
+//const busboyBodyParser = require('busboy-body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -33,6 +36,8 @@ for(var y=0; y<gridSize;y++) {
     }
 }
 app.grid = app.emptyGrid;
+
+app.actions = [];
 
 app.game = {
   status: 0, 
