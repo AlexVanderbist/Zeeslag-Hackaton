@@ -9,7 +9,7 @@
     app.controller('MainController',['$rootScope','$scope','$http',function($rootScope,$scope,$http){
         $scope.length = 2;
         $scope.direction = "east";
-
+        $scope.waitTilStart = false;
         var server = "http://192.168.47.192:3000/api";
        // $scope.gameStatus = 0;
 
@@ -18,7 +18,7 @@
                 method: 'GET',
                 url: server + '/game'
             }).then(function successCallback(response) {
-//console.log(response);
+
                 $scope.gameStatus = response.data.status;
                // $scope.gridSize = response.data["gridSize"];
                 if(response['status'] == 2){
@@ -196,7 +196,7 @@
         };
 
         $scope.post_boats = function(){
-            console.log('check chekc');
+            //console.log('check chekc');
             if(boat2IsSet && boat3isSet && boat5isSet){
                 console.log('alle boten zijn gezet');
                // console.log(allBoats);
@@ -204,8 +204,9 @@
                 $http.post(server + '/game/player',{
                   boats: allBoats
                 }).success(function(data){
+                        $scope.waitTilStart = true;
+                        $scope.playerId = data['playerId'];
 
-                     $scope.playerId = data['playerId'];
 
                 });
             }

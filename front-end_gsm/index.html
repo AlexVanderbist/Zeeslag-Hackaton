@@ -16,7 +16,7 @@
     <div class="indexContent"  ng-controller="MainController">
         
         
-        <div class="game_none" ng-if="gameStatus == 0">
+        <div class="game_none" ng-if="gameStatus == 0" ng-hide="waitTilStart">
             
             <h1>Zeeslag premium!</h1>
             
@@ -32,7 +32,7 @@
             
         </div>
         
-        <div class="game_created" ng-if="gameStatus == 1">
+        <div class="game_created" ng-if="gameStatus == 1" ng-hide="waitTilStart">
             
             <form>
                 <div>
@@ -83,7 +83,9 @@
             
             
         </div>
-        
+        <div ng-show="waitTilStart">
+            <h1> wacht tot tot iedereen zijn boten heeft gezet</h1>
+        </div>
         <div class="game_started" ng-if="gameStatus == 2">
             
             <div>
