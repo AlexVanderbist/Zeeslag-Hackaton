@@ -24,11 +24,14 @@
 
                 $scope.gameStatus = response.data.status;
 
-
+                    console.log('status ' + response.data['status']);
                // $scope.gridSize = response.data["gridSize"];
+                var str = location.pathname;
+                var n = str.lastIndexOf('/');
+                var result = str.substring(n+1);
+                if(response.data['status'] == 2 && result != "gridGame.html" ){
 
-                if(response['status'] == 2){
-
+           
                     window.location = "./gridGame.html"
                 }else{
                     refreshStatus();
@@ -279,7 +282,7 @@
             }).then(function successCallback(response) {
                 var status = $scope.gameStatus;
                 if(status != 2 && response.data.playerId){
-
+                console.log();
                 $scope.waitTilStart = true;
                 }else{
 
