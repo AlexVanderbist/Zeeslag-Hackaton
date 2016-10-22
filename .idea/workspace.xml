@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6698244d-9e2b-4e43-bb84-45de5d889ef2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end_gsm/js/main.js" afterPath="$PROJECT_DIR$/front-end_gsm/js/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/front-end_gsm/test.html" afterPath="$PROJECT_DIR$/front-end_gsm/test.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Zeeslag-Hackaton.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/front-end_gsm/test.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41100702">
-              <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+            <state vertical-scroll-proportion="-4.5">
+              <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -67,14 +67,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/front-end_gsm/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.882353">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.36915886">
+              <caret line="212" column="69" selection-start-line="212" selection-start-column="69" selection-end-line="212" selection-end-column="69" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
-                <element signature="e#2474#6206#0" expanded="false" />
+                <element signature="e#2435#6167#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -123,8 +123,8 @@
         <option value="$PROJECT_DIR$/front-end_gsm/test.json" />
         <option value="$PROJECT_DIR$/front-end_gsm/css/style.css" />
         <option value="$PROJECT_DIR$/front-end_gsm/index.html" />
-        <option value="$PROJECT_DIR$/front-end_gsm/js/main.js" />
         <option value="$PROJECT_DIR$/front-end_gsm/test.html" />
+        <option value="$PROJECT_DIR$/front-end_gsm/js/main.js" />
       </list>
     </option>
   </component>
@@ -358,22 +358,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end_gsm/js/main.js">
+    <entry file="file://$PROJECT_DIR$/front-end_gsm/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.882353">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-            <element signature="e#2474#6206#0" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-4.5">
+          <caret line="36" column="47" selection-start-line="36" selection-start-column="47" selection-end-line="36" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/front-end_gsm/test.html">
+    <entry file="file://$PROJECT_DIR$/front-end_gsm/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41100702">
-          <caret line="43" column="40" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
-          <folding />
+        <state vertical-scroll-proportion="0.36915886">
+          <caret line="212" column="69" selection-start-line="212" selection-start-column="69" selection-end-line="212" selection-end-column="69" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+            <element signature="e#2435#6167#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

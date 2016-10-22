@@ -34,20 +34,10 @@
 
         <div class="game_created" ng-if="gameStatus == 1" ng-hide="waitTilStart">
 
-            <form>
+            <form enctype='multipart/form-data'>
                 <div>
                     <label for="photo">Foto:</label>
                     <input ng-model="photo" type="file" name="photo" id="photo">
-
-                    <input type="file" class="takepicture" accept="image/*" capture="camera">
-                    <script>
-                        $( ".takepicture" ).click(function( event ) {
-                            event.preventDefault();
-                            $( "<div>" )
-                                    .append( "default " + event.type + " prevented" )
-                                    .appendTo( "#log" );
-                        });
-                    </script>
 
                 </div>
 

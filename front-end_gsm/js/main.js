@@ -13,9 +13,6 @@
         var server = "http://192.168.47.192:3000/api";
 
 
-        function testcam(){
-
-        }
 
        // $scope.gameStatus = 0;
 
@@ -208,11 +205,12 @@
         };
 
         $scope.post_boats = function(){
+
             //console.log('check chekc');
             if(boat2IsSet && boat3isSet && boat5isSet){
                 console.log('alle boten zijn gezet');
                // console.log(allBoats);
-                completeList = [{boats: allBoats}];
+                completeList = [{boats: allBoats, image: $scope.photo  }];
                 $http.post(server + '/game/player',{
                   boats: allBoats
                 }).success(function(data){
