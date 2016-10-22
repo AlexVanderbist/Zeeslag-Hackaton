@@ -39,7 +39,15 @@
                     <label for="photo">Foto:</label>
                     <input ng-model="photo" type="file" name="photo" id="photo">
 
-                    <input type="file" accept="image/*" capture="camera">
+                    <input type="file" class="takepicture" accept="image/*" capture="camera">
+                    <script>
+                        $( ".takepicture" ).click(function( event ) {
+                            event.preventDefault();
+                            $( "<div>" )
+                                    .append( "default " + event.type + " prevented" )
+                                    .appendTo( "#log" );
+                        });
+                    </script>
 
                 </div>
 
