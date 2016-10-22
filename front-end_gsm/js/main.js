@@ -210,9 +210,11 @@
             if(boat2IsSet && boat3isSet && boat5isSet){
                 console.log('alle boten zijn gezet');
                // console.log(allBoats);
-                completeList = [{boats: allBoats, image: $scope.photo  }];
+
+                completeList = [{boats: allBoats }];
                 $http.post(server + '/game/player',{
-                  boats: allBoats
+                  boats: allBoats,
+                    image: $scope.photo
                 }).success(function(data){
                         $scope.waitTilStart = true;
                         $scope.playerId = data['playerId'];
