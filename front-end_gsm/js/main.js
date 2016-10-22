@@ -11,6 +11,12 @@
         $scope.direction = "east";
         $scope.waitTilStart = false;
         var server = "http://192.168.47.192:3000/api";
+
+
+        function testcam(){
+
+        }
+
        // $scope.gameStatus = 0;
 
         $scope.initWebsite = function(){
@@ -20,9 +26,15 @@
             }).then(function successCallback(response) {
 
                 $scope.gameStatus = response.data.status;
+
+
                // $scope.gridSize = response.data["gridSize"];
+
                 if(response['status'] == 2){
+
                     window.location = "./gridGame.html"
+                }else{
+                    refreshStatus();
                 }
                 $scope.gridSize = response.data["gridSize"];
                 var array = [];
@@ -121,11 +133,24 @@
                         newBoatOk = false;
                         break;
                     }
-                    else {
-                        //console.log(newBoatArray[i] + " bestaat nog niet...");
-                        //boatsFullArray.push(newBoatArray[i]);
-                        //$('.' + newBoatArray[i]).addClass("boat");
+                    //this part is added *******************************************
+                    console.log("lengte is : " + newBoatArray.length);
+                    if(newBoatArray[i].length == 2) {
+                        var xPos = newBoatArray[i].substring(0,1);
+                        var yPos = newBoatArray[i].substring(1);
                     }
+                    else if(newBoatArray[i].length > 2) {
+                        var xPos = newBoatArray[i].substring(0,2);
+                        var yPos = newBoatArray[i].substring(2);
+                        console.log(xPos + " en " + yPos);
+                    }
+                    
+                    if(xPos > 8 || yPos > 8) {
+                        newBoatOk = false;
+                        break;
+                    }
+                    //this part above this is added ********************************
+                    
                 }
                 console.log("newbOK " + newBoatOk);
                 if(newBoatOk) {
@@ -221,20 +246,29 @@
 
         };
         function refreshStatus(){
+
             $http({
                 method: 'GET',
-                url: server + '/game'
+                url: server + '/game/player'
             }).then(function successCallback(response) {
+                var status = $scope.gameStatus;
+                if(status != 2 && response.data.playerId){
 
+                $scope.waitTilStart = true;
+                }else{
+
+                }
+                console.log(response);
             }, function errorCallback(response) {
 
             });
         }
 
+
        function statusInterval(){
 
            setInterval(function(){
-           refreshStatus()
+
            }, 3000);
        }
 
