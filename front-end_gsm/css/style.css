@@ -93,6 +93,11 @@ h2 {
     display: block;
 }
 
+
+.set_boats {
+    width: 80%;
+}
+
 .game_created .direction,
 .game_created .length {
     width: 50%;
@@ -146,6 +151,21 @@ h2 {
     background-color: #c55;
 }
 
+.game_busy .reset_btn {
+    width: 100%;
+    border: none;
+    background-color: #7CBFB8;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 10px;
+    font-size: inherit;
+    padding: 5px 0;
+}
+
+.game_busy .reset_btn:hover {
+    background-color: #308279;
+}
+
 /* CLEARFIX */
 .game_created .set_boats::before, .game_created .set_boats::after {
     content: "";
@@ -153,7 +173,7 @@ h2 {
     display: table;
 }
 
-.game_created .setboats::after {
+.game_created .set_boats::after {
     clear: both;
 }
 
@@ -169,6 +189,11 @@ h2 {
     .indexContent{
         width: 100%;
         margin: 0 auto;
+    }
+    
+    
+    .set_boats {
+        width: 100%;
     }
     
     .grid {
