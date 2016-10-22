@@ -276,6 +276,7 @@
             }).then(function successCallback(response) {
 
                 var status = $scope.gameStatus;
+
                 if (status == 2 && response.data.playerId) {
                     for(var i = 0; i < response.data.boats.length; i++ ){
 
@@ -288,6 +289,7 @@
 
                     $scope.waitTilStart = true;
                 } else {
+
 
                 }
                 console.log(response);
