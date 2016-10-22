@@ -214,7 +214,7 @@
                 completeList = [{boats: allBoats }];
                 $http.post(server + '/game/player',{
                   boats: allBoats,
-                    image: $scope.photo
+                    image: "test"
                 }).success(function(data){
                         $scope.waitTilStart = true;
                         $scope.playerId = data['playerId'];
