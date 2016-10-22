@@ -83,7 +83,7 @@
         var allBoats = [];
 
 
-        var fd = new FormData();
+
 
         $scope.set_boat = function(x,y,direction,lengthboat){
             var currentx =x;
@@ -203,9 +203,30 @@
            // console.log(y);
            // console.log("x" + x + " y" + y );
         };
+        $scope.uploadavtar = function(files){
+            console.log('upload');
+            var fd = new FormData();
+            //Take the first selected file
+            fd.append("file", files[0]);
 
-        $scope.post_boats = function(photo){
+            $http.post(server + '/game/player', fd, {
+                withCredentials: false,
+                headers: {'Content-Type': undefined },
+                transformRequest: angular.identity
+            }).then(function successCallback(response) {
+                alert(response);
+                // this callback will be called asynchronously
+                // when the response is available
+            }, function errorCallback(response) {
+                alert(response);
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+        };
+        $scope.post_boats = function(){
 
+
+          
             //console.log('check chekc');
             if(boat2IsSet && boat3isSet && boat5isSet){
                 console.log('alle boten zijn gezet');
@@ -216,8 +237,9 @@
                     //withCredentials: true,
                     //headers: {'Content-Type': undefined },
                     //transformRequest: angular.identity,
-                    boats: allBoats,
-                    image: photo
+                    boats: allBoats
+
+
 
                 }).success(function(data){
                         $scope.waitTilStart = true;
@@ -262,6 +284,8 @@
 
            }, 3000);
        }
+
+
 
 
 

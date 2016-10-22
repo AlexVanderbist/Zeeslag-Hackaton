@@ -3,6 +3,7 @@
 <head>
     <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/ng-file-upload.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -34,14 +35,14 @@
 
         <div class="game_created" ng-if="gameStatus == 1" ng-hide="waitTilStart">
 
-            <form enctype='multipart/form-data' >
+            <form enctype='multipart/form-data' method="post" >
                 <div>
                     <label for="photo">Foto:</label>
-                    <input ng-model="photo" type="file" name="photo" id="photo" >
+                    <input ng-model="photo" type="file" name="photo" id="photo"  onchange="angular.element(this).scope().uploadavtar(this.files)">
 
                 </div>
-
             </form>
+
 
             <div class="set_boats">
 
