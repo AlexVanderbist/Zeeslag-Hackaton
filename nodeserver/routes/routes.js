@@ -263,6 +263,8 @@ var appRouter = function(app) {
         if(hitUsers.length){
             app.grid[index].status = status; // hit
             app.grid[index].players = hitUsers;
+        } else {
+            app.grid[index].status = 1;
         }
 
 
