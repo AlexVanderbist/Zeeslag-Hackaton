@@ -10,7 +10,7 @@
         $scope.length = 2;
         $scope.direction = "east";
         $scope.waitTilStart = false;
-        var server = "http://192.168.47.192:3000/api";
+        var server = "http://192.168.47.204:3000/api";
 
 
         // $scope.gameStatus = 0;
