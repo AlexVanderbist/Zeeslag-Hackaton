@@ -220,7 +220,10 @@ var appRouter = function(app) {
         //var index = app.grid.findIndex(square => square.x==coords.x && square.y==coords.y);
 
         app.grid.forEach(function(square, thisindex){
-            if(square.x==coords.x && square.y==coords.y) var index = thisindex;
+            if(square.x==coords.x && square.y==coords.y) {
+                var index = thisindex;
+                console.log("yo ",index);
+        }
         },this);
 
 
