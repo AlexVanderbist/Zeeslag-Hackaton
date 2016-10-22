@@ -218,7 +218,28 @@
              boatsFullArray = [];
             $("*").removeClass('boat');
 
+        };
+        function refreshStatus(){
+            $http({
+                method: 'GET',
+                url: server + '/game'
+            }).then(function successCallback(response) {
+
+            }, function errorCallback(response) {
+
+            });
         }
+
+       function statusInterval(){
+
+           setInterval(function(){
+           refreshStatus()
+           }, 3000);
+       }
+
+
+
+
 
     }]);
 
