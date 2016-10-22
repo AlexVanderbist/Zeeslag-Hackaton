@@ -13,9 +13,6 @@
         var server = "http://192.168.47.192:3000/api";
 
 
-        function testcam(){
-
-        }
 
        // $scope.gameStatus = 0;
 
@@ -27,11 +24,14 @@
 
                 $scope.gameStatus = response.data.status;
 
-
+                    console.log('status ' + response.data['status']);
                // $scope.gridSize = response.data["gridSize"];
+                var str = location.pathname;
+                var n = str.lastIndexOf('/');
+                var result = str.substring(n+1);
+                if(response.data['status'] == 2 && result != "gridGame.html" ){
 
-                if(response['status'] == 2){
-
+           
                     window.location = "./gridGame.html"
                 }else{
                     refreshStatus();
@@ -219,15 +219,44 @@
            // console.log(y);
            // console.log("x" + x + " y" + y );
         };
+        $scope.uploadavtar = function(files){
+            console.log('upload');
+            var fd = new FormData();
+            //Take the first selected file
+            fd.append("file", files[0]);
 
+            $http.post(server + '/game/player', fd, {
+                withCredentials: false,
+                headers: {'Content-Type': undefined },
+                transformRequest: angular.identity
+            }).then(function successCallback(response) {
+                alert(response);
+                // this callback will be called asynchronously
+                // when the response is available
+            }, function errorCallback(response) {
+                alert(response);
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+        };
         $scope.post_boats = function(){
+
+
+          
             //console.log('check chekc');
             if(boat2IsSet && boat3isSet && boat5isSet){
                 console.log('alle boten zijn gezet');
                // console.log(allBoats);
-                completeList = [{boats: allBoats}];
-                $http.post(server + '/game/player',{
-                  boats: allBoats
+
+                completeList = [{boats: allBoats }];
+                $http.post(server + '/game/player', {
+                    //withCredentials: true,
+                    //headers: {'Content-Type': undefined },
+                    //transformRequest: angular.identity,
+                    boats: allBoats
+
+
+
                 }).success(function(data){
                         $scope.waitTilStart = true;
                         $scope.playerId = data['playerId'];
@@ -253,7 +282,7 @@
             }).then(function successCallback(response) {
                 var status = $scope.gameStatus;
                 if(status != 2 && response.data.playerId){
-
+                console.log();
                 $scope.waitTilStart = true;
                 }else{
 
@@ -271,6 +300,8 @@
 
            }, 3000);
        }
+
+
 
 
 
