@@ -266,7 +266,7 @@ var appRouter = function(app) {
         },this);
 
         if(hitUsers.length){
-            app.grid[index].status = status; // hit
+            app.grid[index].status = 2; // hit
             app.grid[index].players = hitUsers;
         } else {
             app.grid[index].status = 1;
