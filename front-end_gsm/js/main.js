@@ -203,13 +203,8 @@
            // console.log(y);
            // console.log("x" + x + " y" + y );
         };
-        $scope.uploadavtar = function(files) {
 
-            //Take the first selected file
-            fd.append("file", files[0]);
-
-        };
-        $scope.post_boats = function(){
+        $scope.post_boats = function(photo){
 
             //console.log('check chekc');
             if(boat2IsSet && boat3isSet && boat5isSet){
@@ -217,11 +212,12 @@
                // console.log(allBoats);
 
                 completeList = [{boats: allBoats }];
-                $http.post(server + '/game/player', fd,{
+                $http.post(server + '/game/player', {
                     //withCredentials: true,
                     //headers: {'Content-Type': undefined },
-                    transformRequest: angular.identity,
-                    boats: allBoats
+                    //transformRequest: angular.identity,
+                    boats: allBoats,
+                    image: photo
 
                 }).success(function(data){
                         $scope.waitTilStart = true;

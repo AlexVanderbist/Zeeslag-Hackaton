@@ -37,7 +37,7 @@
             <form enctype='multipart/form-data' >
                 <div>
                     <label for="photo">Foto:</label>
-                    <input ng-model="photo" type="file" name="photo" id="photo" onchange="angular.element(this).scope().uploadavtar(this.files)">
+                    <input ng-model="photo" type="file" name="photo" id="photo" >
 
                 </div>
 
@@ -86,7 +86,7 @@
             </table>
 
             <div>
-                <button ng-click="post_boats()">Zet boten</button>
+                <button ng-click="post_boats(photo)">Zet boten</button>
                 <button ng-click="reset_boats()">Reset</button>
             </div>
 
