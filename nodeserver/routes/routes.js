@@ -54,7 +54,15 @@ var appRouter = function(app) {
             req.connection.socket.remoteAddress;
 
         var player = findUserWithIp(ip);
-        var index = app.game.players.findIndex(player => player.playerId==player.playerId);
+
+
+
+        //var index = app.game.players.findIndex(player => player.playerId==player.playerId);
+        app.game.players.forEach(function(playerloop, thisindex){
+            if(playerloop.playerId==player.playerId) var index = thisindex;
+        },this);
+
+
         app.game.players[index].photo = req.file.filename;
 
     });
@@ -209,7 +217,11 @@ var appRouter = function(app) {
         var hitUsers = [];
     
         // get grid square index
-        var index = app.grid.findIndex(square => square.x==coords.x && square.y==coords.y);
+        //var index = app.grid.findIndex(square => square.x==coords.x && square.y==coords.y);
+
+        app.grid.forEach(function(square, thisindex){
+            if(square.x==coords.x && square.y==coords.y) var index = thisindex;
+        },this);
 
 
         // go over all users 
