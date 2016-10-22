@@ -282,7 +282,7 @@
             }).then(function successCallback(response) {
                 var status = $scope.gameStatus;
                 if(status != 2 && response.data.playerId){
-                console.log();
+                console.log(response.data);
                 $scope.waitTilStart = true;
                 }else{
 
