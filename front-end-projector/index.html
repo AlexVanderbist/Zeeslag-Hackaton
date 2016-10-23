@@ -51,7 +51,7 @@
                 <table>
                     <tr ng-repeat="y in range(0,gride.height+1)">
 
-                        <td ng-repeat="x in range(0,gride.length+1)" class="{{y}}{{x}}">
+                        <td ng-repeat="x in range(0,gride.length+1)" class="{{x}}{{y}}">
 
                             <div ng-if="x==0 || y==0 || x==gride.length+1 || y==gride.length+1" class="grey">
                                 <div ng-if=" x==0 && y==gride.length+1" class="rood">

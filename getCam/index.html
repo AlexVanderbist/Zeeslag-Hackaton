@@ -40,13 +40,14 @@
 	var gridSize;
 	window.onload = function () {
 		console.log("==========send GET==========");
-		fetch('http://192.168.47.192:3000/api/game', {
-			method: 'GET'
-		}).then(function(response) {
-			return response.json()
-		}).then(function(json) {
-			gridSize = json.gridSize;
-		});
+		//fetch('http://localhost:3000/api/game', {
+		//	method: 'GET'
+		//}).then(function(response) {
+		//	return response.json()
+		//}).then(function(json) {
+		//	gridSize = json.gridSize;
+		//});
+		gridSize = 8;
 
 		var video = document.getElementById('video');
 		var canvas = document.getElementById('canvas');
@@ -205,15 +206,15 @@
 						console.log(grid + "  " + newCooryGrid);
 
 						console.log("###################");
-						var calculatedX = grid - Math.ceil(y);
-						var calculatedY = Math.ceil(x);
+						var calculatedX = Math.ceil(y);
+						var calculatedY = grid - Math.ceil(x) + 1;
 						console.log(calculatedX + "   " + calculatedY);
 
 						sendFireRequest(calculatedX, calculatedY);
 					}
 
 					function sendFireRequest(calculatedX, calculatedY) {
-						fetch('http://192.168.47.192:3000/api/game/fire', {
+						fetch('http://192.168.47.204:3000/api/game/fire', {
 							method: 'POST',
 							redirect: 'follow',
 							body: JSON.stringify({

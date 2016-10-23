@@ -219,8 +219,13 @@ var appRouter = function(app) {
         // get grid square index
         //var index = app.grid.findIndex(square => square.x==coords.x && square.y==coords.y);
 
+        var index= null;
+
         app.grid.forEach(function(square, thisindex){
-            if(square.x==coords.x && square.y==coords.y) var index = thisindex;
+            if(square.x==coords.x && square.y==coords.y) {
+                index = thisindex;
+                console.log("yo ",index);
+        }
         },this);
 
 
@@ -228,27 +233,29 @@ var appRouter = function(app) {
         app.game.players.forEach(function(player, playerIndex){
             var status = 1;
             // loop over boats
-            app.game.players[playerIndex].boats.forEach(function(boat, boatIndex){
-                var boatCoords = getCoordsForBoats([boat]);
+            if(app.game.players[playerIndex].boats) {
+                app.game.players[playerIndex].boats.forEach(function(boat, boatIndex){
+                    var boatCoords = getCoordsForBoats([boat]);
 
-                // check for a hit
-                if(containsCoords(coords, boatCoords)) {
-                    console.log('we have a hit on ', coords, boat.x, boat.y);
-                    // HIT! :D
-                    status = 2;
-                    app.game.players[playerIndex].boats[boatIndex].hits++;
-                    
-                    //checkBoatHits(boat);
-                    if(boat.hits == boat.length) {
-                        // ship down!
-                        addAction('ship_sunk', app.game.players[playerIndex].playerId, app.game.currentPlayer);
+                    // check for a hit
+                    if(containsCoords(coords, boatCoords)) {
+                        console.log('we have a hit on ', coords, boat.x, boat.y);
+                        // HIT! :D
+                        status = 2;
+                        app.game.players[playerIndex].boats[boatIndex].hits++;
+                        
+                        //checkBoatHits(boat);
+                        if(boat.hits == boat.length) {
+                            // ship down!
+                            addAction('ship_sunk', app.game.players[playerIndex].playerId, app.game.currentPlayer);
 
-                        // check other boats
-                        // TODO
+                            // check other boats
+                            // TODO
+                        }
                     }
-                }
 
-            }, this);
+                }, this);
+            }
 
             if(status == 2) {
                 var playerWithoutBoats = player;
@@ -261,8 +268,10 @@ var appRouter = function(app) {
         },this);
 
         if(hitUsers.length){
-            app.grid[index].status = status; // hit
+            app.grid[index].status = 2; // hit
             app.grid[index].players = hitUsers;
+        } else {
+            app.grid[index].status = 1;
         }
 
 

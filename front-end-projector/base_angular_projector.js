@@ -35,10 +35,13 @@ angular.module("myapp", [])
                     for(var i =0; i < response.data.length; i++){
                         if(!($("."+response.data[i].x + +response.data[i].y).hasClass("status_"+response.data[i].status)) ){
                             $("."+response.data[i].x + +response.data[i].y).addClass("status_"+ response.data[i].status );
-                            if(response.data[i].status == 2 || response.data[i].status == 1){
+                            if(response.data[i].status == 2){
                                 for(var j =0; j < response.data[i].players.length; j++){
-                                    $("."+response.data[i].x + +response.data[i].y).append("<img class='img' src='http://192.168.47.204:3000/"+response.data[i].players[j].photo +"'>");
+                                    $("."+response.data[i].x + +response.data[i].y).append("<img class='img' src='check.png'>");
                                 }
+                            }
+                            if(response.data[i].status == 1) {
+                                $("."+response.data[i].x + +response.data[i].y).append("<img class='img greyimg' src='nope.jpg'>");
                             }
                         }
                     }
